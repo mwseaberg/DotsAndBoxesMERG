@@ -15,7 +15,13 @@ public class ClickableLine : MonoBehaviour
     }
 
     void OnMouseDown(){
-        colorIndex = 2;
+        //allows color to change back with click
+        if(colorIndex == 2){
+            colorIndex = 0;
+        }
+        else{
+            colorIndex=2;
+        }
         GetComponent<Renderer>().material.color = colors[colorIndex];
         Debug.Log("clicked!");
     }   
