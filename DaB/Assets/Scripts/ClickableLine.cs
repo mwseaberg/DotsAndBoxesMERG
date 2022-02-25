@@ -5,13 +5,26 @@ using UnityEngine;
 public class ClickableLine : MonoBehaviour
 {
 
+    (int, int) endpoint1;
+    (int, int) endpoint2;
+
+    bool drawn;
+
+    LineManager manager;
+
     Color[] colors = new Color[] {Color.white, Color.red, Color.green, Color.blue};
     int colorIndex;
 
-    public void Init(){
+    public void Init(LineManager manager, (int, int) endpoint1, (int, int) endpoint2){
+        this.manager = manager;
+        this.endpoint1 = endpoint1;
+        this.endpoint2 = endpoint2;
+        drawn = false;
+
         colorIndex = 0;
         GetComponent<Renderer>().material.color = colors[colorIndex];
-        Debug.Log("init!");
+
+        // Debug.Log($"made line from {endpoint1} to {endpoint2}");
     }
 
     void OnMouseDown(){
@@ -23,7 +36,18 @@ public class ClickableLine : MonoBehaviour
             colorIndex=2;
         }
         GetComponent<Renderer>().material.color = colors[colorIndex];
-        Debug.Log("clicked!");
+
+        // TODO implement button to actually confirm
+        confirmClick();
     }   
+
+    void confirmClick(){
+        drawn = true;
+        manager.checkForBoxAt(endpoint1, endpoint2);
+    }
+
+    bool isDrawn(){
+        return drawn;
+    }
 
 }
