@@ -67,10 +67,37 @@ public class LineManager : MonoBehaviour
 
         if(x1==x2){
             // vertical
-            // TODO finish this (I kinda have the logic figured out)
+            
+            //case for line at far left 
+            if(x1==0){
+                //check three corresponding lines pushing right, fill in appropriate squares
+                //more nested if statements checking if lines were already selected?
+            }
+            //case for line at far right
+            else if(x1==_width){
+                //check three corresponding lines pushing left, fill in appropriate squares
+            }
+            //case for line in middle of the board 
+            else{
+                //check six corresponding lines right and left, fill in appropriate squares 
+            }
+
         } else if(y1==y2){
             // horizontal
-            // TODO finish this (I kinda have the logic figured out)
+
+            //case for line at bottom of board
+            if(y1==0){
+                //check three corresponding lines pushing up, fill in appropriate squares
+                //more nested if statements checking if lines were already selected?
+            }
+            //case for line at top of board
+            else if(y1==_height){
+                //check three corresponding lines pushing down, fill in appropriate squares
+            }
+            //case for line in middle of the board 
+            else{
+                //check six corresponding lines up and down, fill in appropriate squares 
+            }
         } else {
             Debug.Log("ERROR this should not happen");
         }
