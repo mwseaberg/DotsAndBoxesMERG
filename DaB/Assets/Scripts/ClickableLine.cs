@@ -46,7 +46,7 @@ public class ClickableLine : MonoBehaviour
         manager.checkForBoxAt(endpoint1, endpoint2);
     }
 
-    bool isDrawn(){
+    public bool isDrawn(){
         return drawn;
     }
 
