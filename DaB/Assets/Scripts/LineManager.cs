@@ -85,7 +85,7 @@ public class LineManager : MonoBehaviour
 
             //case for line at far right
             else if(x1==_width){
-                if(_lines[(new Vector2(x1,y1),new Vector2(x1-1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2-1,y2))].isDrawn()
+                if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1-1,y1)].Fill();
@@ -97,7 +97,7 @@ public class LineManager : MonoBehaviour
             else{
                 
                 //check left 
-                if(_lines[(new Vector2(x1,y1),new Vector2(x1-1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2-1,y2))].isDrawn()
+                if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1-1,y1)].Fill();
@@ -129,7 +129,7 @@ public class LineManager : MonoBehaviour
             else if(y1==_height){
                 
                 //check three corresponding lines pushing down, fill in appropriate squares
-                if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1-1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2-1))].isDrawn()
+                if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1-1)].Fill();
@@ -146,7 +146,7 @@ public class LineManager : MonoBehaviour
                      _squares[new Vector2(x1,y1)].Fill();
                 } 
 
-                if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1-1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2-1))].isDrawn()
+                if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1-1)].Fill();
