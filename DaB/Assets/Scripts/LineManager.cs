@@ -26,21 +26,21 @@ public class LineManager : MonoBehaviour
     void GenerateGrid() {
         _lines = new Dictionary<(Vector2,Vector2), ClickableLine>();
         _squares = new Dictionary<Vector2, FillableSquare>();
-        for (int x = 0; x < _width; x++) {
-            for (int y = 0; y < _height; y++) {
+        int x, y;
+        for ( x = 0; x < _width; x++) {
+            for ( y = 0; y < _height; y++) {
 
                 // make horizontal lines
                 var spawnedLineH = Instantiate(_linePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
+                // not sure if these names ever get really used, we can remove if we don't use them later
                 spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
                 spawnedLineH.Init(this, (x,y), (x+1, y));
                 _lines[(new Vector2(x,y), new Vector2(x+1, y))] = spawnedLineH;
                 // make vertical lines (might need different prefab - vertical)
                 var spawnedLineV = Instantiate(_linePrefab, new Vector3(2*x+1, 2*y+1), Quaternion.identity);
-                spawnedLineV.name = $"HLine from {x},{y} to {x},{y+1}";
+                spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
                 spawnedLineV.Init(this, (x,y), (x, y+1));
                 _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
-
-                // TODO make lines to close the upper right top/right sides
 
                 // make squares
                 var spawnedSquare = Instantiate(_squarePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
@@ -50,9 +50,27 @@ public class LineManager : MonoBehaviour
 
             }
         }
+        // make lines to close the top and right sides
+         y = _height;
+        for (x = 0; x < _width; x++) {
+            Debug.Log($"Spawning HLine from {x},{y} to {x+1},{y}");
+            var spawnedLineH = Instantiate(_linePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
+            spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
+            spawnedLineH.Init(this, (x,y), (x+1, y));
+            _lines[(new Vector2(x,y), new Vector2(x+1, y))] = spawnedLineH;
+        }
+         x = _width;
+        for (y = 0; y < _height; y++) {
+            Debug.Log($"Spawning VLine from {x},{y} to {x},{y+1}");
+            var spawnedLineV = Instantiate(_linePrefab, new Vector3(2*x+1, 2*y+1), Quaternion.identity);
+            spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
+            spawnedLineV.Init(this, (x,y), (x, y+1));
+            _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
+        }
  
         _cam.transform.position = new Vector3((float)_width/2 -0.5f, (float)_height / 2 - 0.5f,-10);
     }
+
  
     public ClickableLine GetTileAtPosition((Vector2,Vector2) pos) {
         if (_lines.TryGetValue(pos, out var line)) return line;

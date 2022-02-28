@@ -21,6 +21,6 @@ public class FillableSquare : MonoBehaviour
     public void Fill(){
         colorIndex=2;
         GetComponent<Renderer>().material.color = colors[colorIndex];
-        // Debug.Log("filled!");
+        Debug.Log("filled!");
     }   
 }
