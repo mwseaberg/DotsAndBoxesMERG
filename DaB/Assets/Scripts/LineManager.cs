@@ -79,7 +79,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
-                    Debug.Log("square!");
+                    _squares[new Vector2(x1,y1)].Fill();
                 }                
             }
 
@@ -88,27 +88,29 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1-1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2-1,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
-                    Debug.Log("square!");
+                     _squares[new Vector2(x1-1,y1)].Fill();
                 }
                 //check three corresponding lines pushing left, fill in appropriate squares
             }
             //case for line in middle of the board 
             //check six corresponding lines right and left, fill in appropriate squares 
             else{
-
+                
                 //check left 
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1-1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2-1,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
-                    Debug.Log("square!");
+                     _squares[new Vector2(x1-1,y1)].Fill();
                 }
                 
                 //check right
                  if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
-                    Debug.Log("square!");
+                    _squares[new Vector2(x1,y1)].Fill();
                 }
+                
+                
             }
 
         } else if(y1==y2){
@@ -120,32 +122,36 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
-                    Debug.Log("square!");
+                     _squares[new Vector2(x1,y1)].Fill();
                 } 
             }
             //case for line at top of board
             else if(y1==_height){
+                
                 //check three corresponding lines pushing down, fill in appropriate squares
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1-1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2-1))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
-                    Debug.Log("square!");
+                     _squares[new Vector2(x1,y1-1)].Fill();
                 } 
+                
             }
             //case for line in middle of the board 
             else{
                 //check six corresponding lines up and down, fill in appropriate squares 
+                
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
-                    Debug.Log("square!");
+                     _squares[new Vector2(x1,y1)].Fill();
                 } 
 
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1-1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2-1))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
-                    Debug.Log("square!");
+                     _squares[new Vector2(x1,y1-1)].Fill();
                 } 
+                
             }
 
         } else {
