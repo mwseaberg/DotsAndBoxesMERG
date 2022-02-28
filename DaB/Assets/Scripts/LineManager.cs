@@ -8,6 +8,7 @@ public class LineManager : MonoBehaviour
  
     [SerializeField] private ClickableLine _linePrefab;
     [SerializeField] private FillableSquare _squarePrefab;
+    [SerializeField] private StaticDot _dotPrefab;
  
     [SerializeField] private Transform _cam;
 
@@ -48,6 +49,13 @@ public class LineManager : MonoBehaviour
                 spawnedSquare.Init((x,y));
                 _squares[new Vector2(x,y)] = spawnedSquare;
 
+                // make dots
+                var spawnedDot = Instantiate(_dotPrefab, new Vector3(2*x, 2*y), Quaternion.identity);
+                spawnedDot.name = $"Dot at {x},{y}";
+                spawnedDot.Init((x,y));
+                Debug.Log($"Dot");
+                // not adding dot to dictionary because I don't think we need to access them
+
             }
         }
         // make lines to close the top and right sides
@@ -68,6 +76,7 @@ public class LineManager : MonoBehaviour
             _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
         }
  
+        // TODO note this will probably need adjustment
         _cam.transform.position = new Vector3((float)_width/2 -0.5f, (float)_height / 2 - 0.5f,-10);
     }
 
