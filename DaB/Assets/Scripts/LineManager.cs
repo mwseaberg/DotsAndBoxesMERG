@@ -10,7 +10,12 @@ public class LineManager : MonoBehaviour
     [SerializeField] private FillableSquare _squarePrefab;
  
     [SerializeField] private Transform _cam;
+
+    //SHOULD I EVEN BE CONSIDERING THIS
+    [SerializeField] private ClickableLine drawnCheck;
+
  
+ //
     private Dictionary<(Vector2,Vector2), ClickableLine> _lines;
     private Dictionary<Vector2, FillableSquare> _squares;
  
@@ -64,13 +69,91 @@ public class LineManager : MonoBehaviour
         (x2, y2) = endpoint2;
 
         // Debug.Log($"{x1}, {y1}, {x2}, {y2}");
-
+        
         if(x1==x2){
             // vertical
-            // TODO finish this (I kinda have the logic figured out)
+            
+            //case for line at far left 
+            if(x1==0){
+               
+                if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
+                 && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
+                     //fill in square here
+                    _squares[new Vector2(x1,y1)].Fill();
+                }                
+            }
+
+            //case for line at far right
+            else if(x1==_width){
+                if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
+                 && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
+                     //fill in square here
+                     _squares[new Vector2(x1-1,y1)].Fill();
+                }
+                //check three corresponding lines pushing left, fill in appropriate squares
+            }
+            //case for line in middle of the board 
+            //check six corresponding lines right and left, fill in appropriate squares 
+            else{
+                
+                //check left 
+                if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
+                 && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
+                     //fill in square here
+                     _squares[new Vector2(x1-1,y1)].Fill();
+                }
+                
+                //check right
+                 if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
+                 && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
+                     //fill in square here
+                    _squares[new Vector2(x1,y1)].Fill();
+                }
+                
+                
+            }
+
         } else if(y1==y2){
             // horizontal
-            // TODO finish this (I kinda have the logic figured out)
+
+            //case for line at bottom of board
+            if(y1==0){
+                //check three corresponding lines pushing up, fill in appropriate squares
+                if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
+                 && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
+                     //fill in square here
+                     _squares[new Vector2(x1,y1)].Fill();
+                } 
+            }
+            //case for line at top of board
+            else if(y1==_height){
+                
+                //check three corresponding lines pushing down, fill in appropriate squares
+                if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
+                 && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
+                     //fill in square here
+                     _squares[new Vector2(x1,y1-1)].Fill();
+                } 
+                
+            }
+            //case for line in middle of the board 
+            else{
+                //check six corresponding lines up and down, fill in appropriate squares 
+                
+                if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
+                 && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
+                     //fill in square here
+                     _squares[new Vector2(x1,y1)].Fill();
+                } 
+
+                if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
+                 && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
+                     //fill in square here
+                     _squares[new Vector2(x1,y1-1)].Fill();
+                } 
+                
+            }
+
         } else {
             Debug.Log("ERROR this should not happen");
         }
