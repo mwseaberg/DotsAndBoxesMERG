@@ -239,6 +239,7 @@ MonoBehaviour:
   _height: 3
   _linePrefab: {fileID: 1705280468392081010, guid: e08cfd58042c74d139e290cf67bcd320, type: 3}
   _squarePrefab: {fileID: 4796890348896001674, guid: 3ec5223ec3d7e42849fbc020d4733a64, type: 3}
+  _dotPrefab: {fileID: 4497305822370041054, guid: 815fe60d340c74e6294f22800a88833a, type: 3}
   _cam: {fileID: 519420032}
   drawnCheck: {fileID: 0}
 --- !u!4 &1370189203
