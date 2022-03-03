@@ -28,21 +28,27 @@ public class LineManager : MonoBehaviour
         _lines = new Dictionary<(Vector2,Vector2), ClickableLine>();
         _squares = new Dictionary<Vector2, FillableSquare>();
         int x, y;
-        for ( x = 0; x < _width; x++) {
-            for ( y = 0; y < _height; y++) {
+        for ( x = 0; x <= _width; x++) {
+            for ( y = 0; y <= _height; y++) {
 
                 // make horizontal lines
-                var spawnedLineH = Instantiate(_linePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
+                var spawnedLineH = Instantiate(_linePrefab, new Vector3(x, y), Quaternion.identity);
                 // not sure if these names ever get really used, we can remove if we don't use them later
                 spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
-                spawnedLineH.Init(this, (x,y), (x+1, y), false); //,false
+                spawnedLineH.Init(this, (x,y), (x, y+1), false);
                 _lines[(new Vector2(x,y), new Vector2(x+1, y))] = spawnedLineH;
                 // make vertical lines (might need different prefab - vertical)
-                var spawnedLineV = Instantiate(_linePrefab, new Vector3(2*x+1, 2*y+1), Quaternion.identity);
+                var spawnedLineV = Instantiate(_linePrefab, new Vector3(x, y), Quaternion.identity);
                 spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
-                spawnedLineV.Init(this, (x,y), (x, y+1), true); //,true
+                spawnedLineV.Init(this, (x,y), (x, y+1), true);
                 _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
 
+
+            }
+        }
+
+                for ( x = 0; x < _width; x++) {
+            for ( y = 0; y < _height; y++) {
                 // make squares
                 var spawnedSquare = Instantiate(_squarePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
                 spawnedSquare.name = $"Square from {x},{y}";
@@ -57,23 +63,6 @@ public class LineManager : MonoBehaviour
                 // not adding dot to dictionary because I don't think we need to access them
 
             }
-        }
-        // make lines to close the top and right sides
-         y = _height;
-        for (x = 0; x < _width; x++) {
-            Debug.Log($"Spawning HLine from {x},{y} to {x+1},{y}");
-            var spawnedLineH = Instantiate(_linePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
-            spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
-            spawnedLineH.Init(this, (x,y), (x+1, y), false); //,false
-            _lines[(new Vector2(x,y), new Vector2(x+1, y))] = spawnedLineH;
-        }
-         x = _width;
-        for (y = 0; y < _height; y++) {
-            Debug.Log($"Spawning VLine from {x},{y} to {x},{y+1}");
-            var spawnedLineV = Instantiate(_linePrefab, new Vector3(2*x+1, 2*y+1), Quaternion.identity);
-            spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
-            spawnedLineV.Init(this, (x,y), (x, y+1), true); //,true
-            _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
         }
 
         // TODO note this will probably need adjustment
