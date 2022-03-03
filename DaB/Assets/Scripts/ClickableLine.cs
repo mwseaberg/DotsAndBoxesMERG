@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 public class ClickableLine : MonoBehaviour
 {
 
@@ -32,7 +31,7 @@ public class ClickableLine : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         //render the vertical one of the sprite
         if(isVertical == true){
-          ChangeSprite(newSprite);
+          transform.Rotate (Vector3.forward * -90);
         }
 
 
