@@ -35,12 +35,12 @@ public class LineManager : MonoBehaviour
                 var spawnedLineH = Instantiate(_linePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
                 // not sure if these names ever get really used, we can remove if we don't use them later
                 spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
-                spawnedLineH.Init(this, (x,y), (x+1, y)); //,false
+                spawnedLineH.Init(this, (x,y), (x+1, y), false); //,false
                 _lines[(new Vector2(x,y), new Vector2(x+1, y))] = spawnedLineH;
                 // make vertical lines (might need different prefab - vertical)
                 var spawnedLineV = Instantiate(_linePrefab, new Vector3(2*x+1, 2*y+1), Quaternion.identity);
                 spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
-                spawnedLineV.Init(this, (x,y), (x, y+1)); //,true
+                spawnedLineV.Init(this, (x,y), (x, y+1), true); //,true
                 _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
 
                 // make squares
@@ -64,7 +64,7 @@ public class LineManager : MonoBehaviour
             Debug.Log($"Spawning HLine from {x},{y} to {x+1},{y}");
             var spawnedLineH = Instantiate(_linePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
             spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
-            spawnedLineH.Init(this, (x,y), (x+1, y)); //,false
+            spawnedLineH.Init(this, (x,y), (x+1, y), false); //,false
             _lines[(new Vector2(x,y), new Vector2(x+1, y))] = spawnedLineH;
         }
          x = _width;
@@ -72,7 +72,7 @@ public class LineManager : MonoBehaviour
             Debug.Log($"Spawning VLine from {x},{y} to {x},{y+1}");
             var spawnedLineV = Instantiate(_linePrefab, new Vector3(2*x+1, 2*y+1), Quaternion.identity);
             spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
-            spawnedLineV.Init(this, (x,y), (x, y+1)); //,true
+            spawnedLineV.Init(this, (x,y), (x, y+1), true); //,true
             _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
         }
 
