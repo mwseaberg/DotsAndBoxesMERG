@@ -5,25 +5,25 @@ using UnityEngine;
 public class LineManager : MonoBehaviour
 {
     [SerializeField] private int _width, _height;
- 
+
     [SerializeField] private ClickableLine _linePrefab;
     [SerializeField] private FillableSquare _squarePrefab;
     [SerializeField] private StaticDot _dotPrefab;
- 
+
     [SerializeField] private Transform _cam;
 
     //SHOULD I EVEN BE CONSIDERING THIS
     [SerializeField] private ClickableLine drawnCheck;
 
- 
+
  //
     private Dictionary<(Vector2,Vector2), ClickableLine> _lines;
     private Dictionary<Vector2, FillableSquare> _squares;
- 
+
     void Start() {
         GenerateGrid();
     }
- 
+
     void GenerateGrid() {
         _lines = new Dictionary<(Vector2,Vector2), ClickableLine>();
         _squares = new Dictionary<Vector2, FillableSquare>();
@@ -35,12 +35,12 @@ public class LineManager : MonoBehaviour
                 var spawnedLineH = Instantiate(_linePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
                 // not sure if these names ever get really used, we can remove if we don't use them later
                 spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
-                spawnedLineH.Init(this, (x,y), (x+1, y));
+                spawnedLineH.Init(this, (x,y), (x+1, y)); //,false
                 _lines[(new Vector2(x,y), new Vector2(x+1, y))] = spawnedLineH;
                 // make vertical lines (might need different prefab - vertical)
                 var spawnedLineV = Instantiate(_linePrefab, new Vector3(2*x+1, 2*y+1), Quaternion.identity);
                 spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
-                spawnedLineV.Init(this, (x,y), (x, y+1));
+                spawnedLineV.Init(this, (x,y), (x, y+1)); //,true
                 _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
 
                 // make squares
@@ -64,7 +64,7 @@ public class LineManager : MonoBehaviour
             Debug.Log($"Spawning HLine from {x},{y} to {x+1},{y}");
             var spawnedLineH = Instantiate(_linePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
             spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
-            spawnedLineH.Init(this, (x,y), (x+1, y));
+            spawnedLineH.Init(this, (x,y), (x+1, y)); //,false
             _lines[(new Vector2(x,y), new Vector2(x+1, y))] = spawnedLineH;
         }
          x = _width;
@@ -72,15 +72,15 @@ public class LineManager : MonoBehaviour
             Debug.Log($"Spawning VLine from {x},{y} to {x},{y+1}");
             var spawnedLineV = Instantiate(_linePrefab, new Vector3(2*x+1, 2*y+1), Quaternion.identity);
             spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
-            spawnedLineV.Init(this, (x,y), (x, y+1));
+            spawnedLineV.Init(this, (x,y), (x, y+1)); //,true
             _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
         }
- 
+
         // TODO note this will probably need adjustment
         _cam.transform.position = new Vector3((float)_width/2 -0.5f, (float)_height / 2 - 0.5f,-10);
     }
 
- 
+
     public ClickableLine GetTileAtPosition((Vector2,Vector2) pos) {
         if (_lines.TryGetValue(pos, out var line)) return line;
         return null;
@@ -96,18 +96,18 @@ public class LineManager : MonoBehaviour
         (x2, y2) = endpoint2;
 
         // Debug.Log($"{x1}, {y1}, {x2}, {y2}");
-        
+
         if(x1==x2){
             // vertical
-            
-            //case for line at far left 
+
+            //case for line at far left
             if(x1==0){
-               
+
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
                     _squares[new Vector2(x1,y1)].Fill();
-                }                
+                }
             }
 
             //case for line at far right
@@ -119,25 +119,25 @@ public class LineManager : MonoBehaviour
                 }
                 //check three corresponding lines pushing left, fill in appropriate squares
             }
-            //case for line in middle of the board 
-            //check six corresponding lines right and left, fill in appropriate squares 
+            //case for line in middle of the board
+            //check six corresponding lines right and left, fill in appropriate squares
             else{
-                
-                //check left 
+
+                //check left
                 if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1-1,y1)].Fill();
                 }
-                
+
                 //check right
                  if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
                     _squares[new Vector2(x1,y1)].Fill();
                 }
-                
-                
+
+
             }
 
         } else if(y1==y2){
@@ -150,35 +150,35 @@ public class LineManager : MonoBehaviour
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1)].Fill();
-                } 
+                }
             }
             //case for line at top of board
             else if(y1==_height){
-                
+
                 //check three corresponding lines pushing down, fill in appropriate squares
                 if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1-1)].Fill();
-                } 
-                
+                }
+
             }
-            //case for line in middle of the board 
+            //case for line in middle of the board
             else{
-                //check six corresponding lines up and down, fill in appropriate squares 
-                
+                //check six corresponding lines up and down, fill in appropriate squares
+
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1)].Fill();
-                } 
+                }
 
                 if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1-1)].Fill();
-                } 
-                
+                }
+
             }
 
         } else {

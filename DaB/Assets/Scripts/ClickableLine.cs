@@ -15,7 +15,7 @@ public class ClickableLine : MonoBehaviour
     Color[] colors = new Color[] {Color.white, Color.red, Color.green, Color.blue};
     int colorIndex;
 
-    public void Init(LineManager manager, (int, int) endpoint1, (int, int) endpoint2){
+    public void Init(LineManager manager, (int, int) endpoint1, (int, int) endpoint2){ //,bool isVertical
         this.manager = manager;
         this.endpoint1 = endpoint1;
         this.endpoint2 = endpoint2;
@@ -24,7 +24,22 @@ public class ClickableLine : MonoBehaviour
         colorIndex = 0;
         GetComponent<Renderer>().material.color = colors[colorIndex];
 
+        //render the vertical one of the sprite
+
         // Debug.Log($"made line from {endpoint1} to {endpoint2}");
+
+
+
+
+        /*
+
+        if(isVertical){
+          rotate
+        }
+
+
+
+        */
     }
 
     void OnMouseDown(){
@@ -39,7 +54,7 @@ public class ClickableLine : MonoBehaviour
 
         // TODO implement button to actually confirm
         confirmClick();
-    }   
+    }
 
     void confirmClick(){
         drawn = true;
