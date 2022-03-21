@@ -1,6 +1,13 @@
 # DotsAndBoxesMERG
 
-Currently developing a Minimum Viable Product. Focus is on the gameplay screen.
+Currently developing v0.1.
+
+Features:
+- Fixed geometry
+- Confirm move functionality
+- Multiplayer, turn functionality
+- Player icons
+- Screens (TODO list)
 
 Working in Unity and (later) Android Studio.
 
