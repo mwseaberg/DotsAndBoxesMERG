@@ -18,9 +18,9 @@ public class FillableSquare : MonoBehaviour
         // Debug.Log($"made square at {originPoint}");
     }
 
-    public void Fill(){
-        colorIndex=2;
-        GetComponent<Renderer>().material.color = colors[colorIndex];
+    public void Fill(Color isPrimary){
+        //colorIndex=2;
+        GetComponent<Renderer>().material.color = isPrimary;
         Debug.Log("filled!");
     }   
 }
