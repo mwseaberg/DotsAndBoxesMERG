@@ -15,10 +15,26 @@ public class LineManager : MonoBehaviour
     //SHOULD I EVEN BE CONSIDERING THIS
     [SerializeField] private ClickableLine drawnCheck;
 
-
- //
     private Dictionary<(Vector2,Vector2), ClickableLine> _lines;
     private Dictionary<Vector2, FillableSquare> _squares;
+
+ //referencing p1 and p2 colors and holder var
+    [SerializeField] private static Color colorP1 = Color.green;
+    [SerializeField] private static Color colorP2 = Color.red;
+    [SerializeField] private Color isPrimary = colorP1;
+    [SerializeField] private int isPrimaryHelper = 1;
+
+
+    //score vars for p1 and p2
+    [SerializeField] private int scoreP1;
+    [SerializeField] private int scoreP2;
+    [SerializeField] private int isScoring;
+
+    //constructor needed to avoid field initializer cannot reference a non-static field... error
+    private void scoring(){
+        isScoring = scoreP1;
+    }
+
 
     void Start() {
         GenerateGrid();
@@ -96,7 +112,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
-                    _squares[new Vector2(x1,y1)].Fill();
+                    _squares[new Vector2(x1,y1)].Fill(isPrimary);
                 }
             }
 
@@ -105,7 +121,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1-1,y1)].Fill();
+                     _squares[new Vector2(x1-1,y1)].Fill(isPrimary);
                 }
                 //check three corresponding lines pushing left, fill in appropriate squares
             }
@@ -117,14 +133,14 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1-1,y1)].Fill();
+                     _squares[new Vector2(x1-1,y1)].Fill(isPrimary);
                 }
 
                 //check right
                  if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
-                    _squares[new Vector2(x1,y1)].Fill();
+                    _squares[new Vector2(x1,y1)].Fill(isPrimary);
                 }
 
 
@@ -139,7 +155,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1,y1)].Fill();
+                     _squares[new Vector2(x1,y1)].Fill(isPrimary);
                 }
             }
             //case for line at top of board
@@ -149,7 +165,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1,y1-1)].Fill();
+                     _squares[new Vector2(x1,y1-1)].Fill(isPrimary);
                 }
 
             }
@@ -160,19 +176,34 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1,y1)].Fill();
+                     _squares[new Vector2(x1,y1)].Fill(isPrimary);
                 }
 
                 if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1,y1-1)].Fill();
+                     _squares[new Vector2(x1,y1-1)].Fill(isPrimary);
                 }
 
             }
 
         } else {
             Debug.Log("ERROR this should not happen");
+        }
+
+        //switch case for isPrimary to swap between p1 and p2 colors/scoring variables for p1 and p2 
+        switch(isPrimaryHelper){
+            case 1:
+                isPrimary = colorP2;
+                isScoring = scoreP2;
+                isPrimaryHelper=2;
+                break;
+
+            case 2:
+                isPrimary = colorP1;
+                isScoring = scoreP1;
+                isPrimaryHelper=1;
+                break;
         }
 
     }
