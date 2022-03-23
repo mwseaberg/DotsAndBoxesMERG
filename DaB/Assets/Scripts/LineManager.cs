@@ -12,9 +12,6 @@ public class LineManager : MonoBehaviour
 
     [SerializeField] private Transform _cam;
 
-    //SHOULD I EVEN BE CONSIDERING THIS
-    [SerializeField] private ClickableLine drawnCheck;
-
     private Dictionary<(Vector2,Vector2), ClickableLine> _lines;
     private Dictionary<Vector2, FillableSquare> _squares;
 
@@ -23,8 +20,7 @@ public class LineManager : MonoBehaviour
     [SerializeField] private static Color colorP2 = Color.red;
     [SerializeField] private Color isPrimary = colorP1;
     [SerializeField] private int isPrimaryHelper = 1;
-
-
+    /*
     //score vars for p1 and p2
     [SerializeField] private int scoreP1;
     [SerializeField] private int scoreP2;
@@ -34,12 +30,12 @@ public class LineManager : MonoBehaviour
     private void scoring(){
         isScoring = scoreP1;
     }
-
+    */
 
     void Start() {
         GenerateGrid();
     }
-
+   
     void GenerateGrid() {
         _lines = new Dictionary<(Vector2,Vector2), ClickableLine>();
         _squares = new Dictionary<Vector2, FillableSquare>();
@@ -47,7 +43,7 @@ public class LineManager : MonoBehaviour
         for ( x = 0; x < _width; x++) {
             for ( y = 0; y <= _height; y++) {
                 // make horizontal lines
-                var spawnedLineH = Instantiate(_linePrefab, new Vector3((float)(x*1.5+.25), (float)(y*1.5)), Quaternion.identity);
+                var spawnedLineH = Instantiate(_linePrefab, new Vector3(x, y), Quaternion.identity);
                 // not sure if these names ever get really used, we can remove if we don't use them later
                 spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
                 spawnedLineH.Init(this, (x,y), (x+1, y), false);
@@ -57,30 +53,30 @@ public class LineManager : MonoBehaviour
 
             for ( x = 0; x <= _width; x++) {
                 for ( y = 0; y < _height; y++) {
-                    var spawnedLineV = Instantiate(_linePrefab, new Vector3((float)(x*1.5), (float)((y+1)*1.5-.25)), Quaternion.identity);
+                    var spawnedLineV = Instantiate(_linePrefab, new Vector3(x, y+1), Quaternion.identity);
                     spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
                     spawnedLineV.Init(this, (x,y), (x, y+1), true);
                     _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
                 }
             }
 
-        //         for ( x = 0; x < _width; x++) {
-        //     for ( y = 0; y < _height; y++) {
-        //         // make squares
-        //         var spawnedSquare = Instantiate(_squarePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
-        //         spawnedSquare.name = $"Square from {x},{y}";
-        //         spawnedSquare.Init((x,y));
-        //         _squares[new Vector2(x,y)] = spawnedSquare;
+                for ( x = 0; x < _width; x++) {
+            for ( y = 0; y < _height; y++) {
+                // make squares
+                var spawnedSquare = Instantiate(_squarePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
+                spawnedSquare.name = $"Square from {x},{y}";
+                spawnedSquare.Init((x,y));
+                _squares[new Vector2(x,y)] = spawnedSquare;
 
-        //         // make dots
-        //         // var spawnedDot = Instantiate(_dotPrefab, new Vector3(2*x, 2*y), Quaternion.identity);
-        //         // spawnedDot.name = $"Dot at {x},{y}";
-        //         // spawnedDot.Init((x,y));
-        //         // Debug.Log($"Dot");
-        //         // not adding dot to dictionary because I don't think we need to access them
+                // make dots
+                // var spawnedDot = Instantiate(_dotPrefab, new Vector3(2*x, 2*y), Quaternion.identity);
+                // spawnedDot.name = $"Dot at {x},{y}";
+                // spawnedDot.Init((x,y));
+                // Debug.Log($"Dot");
+                // not adding dot to dictionary because I don't think we need to access them
 
-        //     }
-        // }
+            }
+        }
 
         // TODO note this will probably need adjustment
         _cam.transform.position = new Vector3((float)_width/2 -0.5f, (float)_height / 2 - 0.5f,-10);
@@ -101,6 +97,8 @@ public class LineManager : MonoBehaviour
         int y2;
         (x2, y2) = endpoint2;
 
+        //this fills selected lines with players colors
+        _lines[(new Vector2(x1,y1), new Vector2(x2,y2))].Fill(isPrimary);
         // Debug.Log($"{x1}, {y1}, {x2}, {y2}");
 
         if(x1==x2){
@@ -195,13 +193,13 @@ public class LineManager : MonoBehaviour
         switch(isPrimaryHelper){
             case 1:
                 isPrimary = colorP2;
-                isScoring = scoreP2;
+                //isScoring = scoreP2;
                 isPrimaryHelper=2;
                 break;
 
             case 2:
                 isPrimary = colorP1;
-                isScoring = scoreP1;
+                //isScoring = scoreP1;
                 isPrimaryHelper=1;
                 break;
         }
