@@ -47,7 +47,7 @@ public class LineManager : MonoBehaviour
         for ( x = 0; x < _width; x++) {
             for ( y = 0; y <= _height; y++) {
                 // make horizontal lines
-                var spawnedLineH = Instantiate(_linePrefab, new Vector3((float)(x*1.5+.25), (float)(y*1.5)), Quaternion.identity);
+                var spawnedLineH = Instantiate(_linePrefab, new Vector3((float)(x*2.25), (float)((y-1)*2.25)), Quaternion.identity);
                 // not sure if these names ever get really used, we can remove if we don't use them later
                 spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
                 spawnedLineH.Init(this, (x,y), (x+1, y), false);
@@ -57,30 +57,30 @@ public class LineManager : MonoBehaviour
 
             for ( x = 0; x <= _width; x++) {
                 for ( y = 0; y < _height; y++) {
-                    var spawnedLineV = Instantiate(_linePrefab, new Vector3((float)(x*1.5), (float)((y+1)*1.5-.25)), Quaternion.identity);
+                    var spawnedLineV = Instantiate(_linePrefab, new Vector3((float)((x-0.5)*2.25), (float)((y-0.5)*2.25)), Quaternion.identity);
                     spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
                     spawnedLineV.Init(this, (x,y), (x, y+1), true);
                     _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
                 }
             }
 
-        //         for ( x = 0; x < _width; x++) {
-        //     for ( y = 0; y < _height; y++) {
-        //         // make squares
-        //         var spawnedSquare = Instantiate(_squarePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
-        //         spawnedSquare.name = $"Square from {x},{y}";
-        //         spawnedSquare.Init((x,y));
-        //         _squares[new Vector2(x,y)] = spawnedSquare;
+                for ( x = 0; x < _width; x++) {
+            for ( y = 0; y < _height; y++) {
+                // make squares
+                var spawnedSquare = Instantiate(_squarePrefab, new Vector3((float)(x*2.25), (float)((y-0.5)*2.25)), Quaternion.identity);
+                spawnedSquare.name = $"Square from {x},{y}";
+                spawnedSquare.Init((x,y));
+                _squares[new Vector2(x,y)] = spawnedSquare;
 
-        //         // make dots
-        //         // var spawnedDot = Instantiate(_dotPrefab, new Vector3(2*x, 2*y), Quaternion.identity);
-        //         // spawnedDot.name = $"Dot at {x},{y}";
-        //         // spawnedDot.Init((x,y));
-        //         // Debug.Log($"Dot");
-        //         // not adding dot to dictionary because I don't think we need to access them
+                // make dots
+                // var spawnedDot = Instantiate(_dotPrefab, new Vector3(2*x, 2*y), Quaternion.identity);
+                // spawnedDot.name = $"Dot at {x},{y}";
+                // spawnedDot.Init((x,y));
+                // Debug.Log($"Dot");
+                // not adding dot to dictionary because I don't think we need to access them
 
-        //     }
-        // }
+            }
+        }
 
         // TODO note this will probably need adjustment
         _cam.transform.position = new Vector3((float)_width/2 -0.5f, (float)_height / 2 - 0.5f,-10);
