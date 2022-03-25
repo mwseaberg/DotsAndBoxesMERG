@@ -19,7 +19,9 @@ public class ClickableLine : MonoBehaviour
     Color[] colors = new Color[] {Color.white, Color.red, Color.green, Color.blue};
     int colorIndex;
 
-    public void Init(LineManager manager, (int, int) endpoint1, (int, int) endpoint2, bool isVertical) { //,bool isVertical
+    Color isPrimaryLine;
+
+    public void Init(LineManager manager, (int, int) endpoint1, (int, int) endpoint2, bool isVertical){ //,bool isVertical
         this.manager = manager;
         this.endpoint1 = endpoint1;
         this.endpoint2 = endpoint2;
@@ -33,20 +35,17 @@ public class ClickableLine : MonoBehaviour
         if(isVertical == true){
           transform.Rotate (Vector3.forward * -90);
         }
-
         // Debug.Log($"made line from {endpoint1} to {endpoint2}");
-
     }
 
+    public void Fill(Color isPrimary){
+        GetComponent<Renderer>().material.color = isPrimary;
+        Debug.Log("filled!");
+    }   
+
     void OnMouseDown(){
-        //allows color to change back with click
-        if(colorIndex == 2){
-            colorIndex = 0;
-        }
-        else{
-            colorIndex=2;
-        }
-        GetComponent<Renderer>().material.color = colors[colorIndex];
+       
+        GetComponent<Renderer>().material.color = isPrimaryLine;
 
         // TODO implement button to actually confirm
         confirmClick();

@@ -12,9 +12,6 @@ public class LineManager : MonoBehaviour
 
     [SerializeField] private Transform _cam;
 
-    //SHOULD I EVEN BE CONSIDERING THIS
-    [SerializeField] private ClickableLine drawnCheck;
-
     private Dictionary<(Vector2,Vector2), ClickableLine> _lines;
     private Dictionary<Vector2, FillableSquare> _squares;
 
@@ -23,8 +20,7 @@ public class LineManager : MonoBehaviour
     [SerializeField] private static Color colorP2 = Color.red;
     [SerializeField] private Color isPrimary = colorP1;
     [SerializeField] private int isPrimaryHelper = 1;
-
-
+    /*
     //score vars for p1 and p2
     [SerializeField] private int scoreP1;
     [SerializeField] private int scoreP2;
@@ -34,12 +30,12 @@ public class LineManager : MonoBehaviour
     private void scoring(){
         isScoring = scoreP1;
     }
-
+    */
 
     void Start() {
         GenerateGrid();
     }
-
+   
     void GenerateGrid() {
         _lines = new Dictionary<(Vector2,Vector2), ClickableLine>();
         _squares = new Dictionary<Vector2, FillableSquare>();
@@ -47,7 +43,11 @@ public class LineManager : MonoBehaviour
         for ( x = 0; x < _width; x++) {
             for ( y = 0; y <= _height; y++) {
                 // make horizontal lines
+<<<<<<< HEAD
                 var spawnedLineH = Instantiate(_linePrefab, new Vector3((float)(x*2.25), (float)((y-1)*2.25)), Quaternion.identity);
+=======
+                var spawnedLineH = Instantiate(_linePrefab, new Vector3(x, y), Quaternion.identity);
+>>>>>>> 59daa404e852a5940ad8b022034b7a4341c9ae3d
                 // not sure if these names ever get really used, we can remove if we don't use them later
                 spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
                 spawnedLineH.Init(this, (x,y), (x+1, y), false);
@@ -57,7 +57,11 @@ public class LineManager : MonoBehaviour
 
             for ( x = 0; x <= _width; x++) {
                 for ( y = 0; y < _height; y++) {
+<<<<<<< HEAD
                     var spawnedLineV = Instantiate(_linePrefab, new Vector3((float)((x-0.5)*2.25), (float)((y-0.5)*2.25)), Quaternion.identity);
+=======
+                    var spawnedLineV = Instantiate(_linePrefab, new Vector3(x, y+1), Quaternion.identity);
+>>>>>>> 59daa404e852a5940ad8b022034b7a4341c9ae3d
                     spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
                     spawnedLineV.Init(this, (x,y), (x, y+1), true);
                     _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
@@ -67,7 +71,11 @@ public class LineManager : MonoBehaviour
                 for ( x = 0; x < _width; x++) {
             for ( y = 0; y < _height; y++) {
                 // make squares
+<<<<<<< HEAD
                 var spawnedSquare = Instantiate(_squarePrefab, new Vector3((float)(x*2.25), (float)((y-0.5)*2.25)), Quaternion.identity);
+=======
+                var spawnedSquare = Instantiate(_squarePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
+>>>>>>> 59daa404e852a5940ad8b022034b7a4341c9ae3d
                 spawnedSquare.name = $"Square from {x},{y}";
                 spawnedSquare.Init((x,y));
                 _squares[new Vector2(x,y)] = spawnedSquare;
@@ -101,6 +109,8 @@ public class LineManager : MonoBehaviour
         int y2;
         (x2, y2) = endpoint2;
 
+        //this fills selected lines with players colors
+        _lines[(new Vector2(x1,y1), new Vector2(x2,y2))].Fill(isPrimary);
         // Debug.Log($"{x1}, {y1}, {x2}, {y2}");
 
         if(x1==x2){
@@ -195,13 +205,13 @@ public class LineManager : MonoBehaviour
         switch(isPrimaryHelper){
             case 1:
                 isPrimary = colorP2;
-                isScoring = scoreP2;
+                //isScoring = scoreP2;
                 isPrimaryHelper=2;
                 break;
 
             case 2:
                 isPrimary = colorP1;
-                isScoring = scoreP1;
+                //isScoring = scoreP1;
                 isPrimaryHelper=1;
                 break;
         }
