@@ -43,11 +43,7 @@ public class LineManager : MonoBehaviour
         for ( x = 0; x < _width; x++) {
             for ( y = 0; y <= _height; y++) {
                 // make horizontal lines
-<<<<<<< HEAD
                 var spawnedLineH = Instantiate(_linePrefab, new Vector3((float)(x*2.25), (float)((y-1)*2.25)), Quaternion.identity);
-=======
-                var spawnedLineH = Instantiate(_linePrefab, new Vector3(x, y), Quaternion.identity);
->>>>>>> 59daa404e852a5940ad8b022034b7a4341c9ae3d
                 // not sure if these names ever get really used, we can remove if we don't use them later
                 spawnedLineH.name = $"HLine from {x},{y} to {x+1},{y}";
                 spawnedLineH.Init(this, (x,y), (x+1, y), false);
@@ -57,11 +53,7 @@ public class LineManager : MonoBehaviour
 
             for ( x = 0; x <= _width; x++) {
                 for ( y = 0; y < _height; y++) {
-<<<<<<< HEAD
                     var spawnedLineV = Instantiate(_linePrefab, new Vector3((float)((x-0.5)*2.25), (float)((y-0.5)*2.25)), Quaternion.identity);
-=======
-                    var spawnedLineV = Instantiate(_linePrefab, new Vector3(x, y+1), Quaternion.identity);
->>>>>>> 59daa404e852a5940ad8b022034b7a4341c9ae3d
                     spawnedLineV.name = $"VLine from {x},{y} to {x},{y+1}";
                     spawnedLineV.Init(this, (x,y), (x, y+1), true);
                     _lines[(new Vector2(x,y), new Vector2(x, y+1))] = spawnedLineV;
@@ -71,11 +63,7 @@ public class LineManager : MonoBehaviour
                 for ( x = 0; x < _width; x++) {
             for ( y = 0; y < _height; y++) {
                 // make squares
-<<<<<<< HEAD
                 var spawnedSquare = Instantiate(_squarePrefab, new Vector3((float)(x*2.25), (float)((y-0.5)*2.25)), Quaternion.identity);
-=======
-                var spawnedSquare = Instantiate(_squarePrefab, new Vector3(2*x, 2*y), Quaternion.identity);
->>>>>>> 59daa404e852a5940ad8b022034b7a4341c9ae3d
                 spawnedSquare.name = $"Square from {x},{y}";
                 spawnedSquare.Init((x,y));
                 _squares[new Vector2(x,y)] = spawnedSquare;
