@@ -9,11 +9,16 @@ public class LineManager : MonoBehaviour
     [SerializeField] private ClickableLine _linePrefab;
     [SerializeField] private FillableSquare _squarePrefab;
     [SerializeField] private StaticDot _dotPrefab;
+    [SerializeField] private ConfirmButton _confirmTurnButtonPrefab;
 
     [SerializeField] private Transform _cam;
 
     private Dictionary<(Vector2,Vector2), ClickableLine> _lines;
     private Dictionary<Vector2, FillableSquare> _squares;
+
+    private ConfirmButton confirmTurnButton;
+
+    private ClickableLine currentlySelectedMove;
 
  //referencing p1 and p2 colors and holder var
     [SerializeField] private static Color colorP1 = Color.green;
@@ -33,6 +38,8 @@ public class LineManager : MonoBehaviour
     */
 
     void Start() {
+        confirmTurnButton = Instantiate(_confirmTurnButtonPrefab, new Vector3(0,0), Quaternion.identity);
+        confirmTurnButton.setManager(this);
         GenerateGrid();
     }
    
@@ -88,8 +95,33 @@ public class LineManager : MonoBehaviour
         return null;
     }
 
+    public Color getCurrentPlayerColor(){
+        return isPrimary;
+    }
+
+    public void showConfirmTurnButton(ClickableLine current){
+        // update knowledge of current move selection
+        currentlySelectedMove = current;
+
+        // confirmTurnButton.SetActive(true);
+        // for every line, if it's not confirmed to be drawn, un-draw it (since the player has just selected a line)
+        foreach (KeyValuePair<(Vector2,Vector2), ClickableLine> entry in _lines){
+            if(!entry.Value.getDrawn()){
+                entry.Value.Unfill();
+            }
+        }
+    }
+
+    public void hideConfirmTurnButton(){
+        // TODO - this won't make the button go away, I gotta figure out how to do that.
+        // Destroy(confirmTurnButton);
+
+        // confirm the move
+        currentlySelectedMove.confirmClick();
+    }
+
     public void checkForBoxAt((int, int) endpoint1, (int, int) endpoint2){
-        Debug.Log($"checking for box by {endpoint1}, {endpoint2}");
+        // Debug.Log($"checking for box by {endpoint1}, {endpoint2}");
         int x1;
         int y1;
         (x1, y1) = endpoint1;

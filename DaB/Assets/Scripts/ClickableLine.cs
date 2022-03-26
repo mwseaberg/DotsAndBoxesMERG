@@ -16,10 +16,7 @@ public class ClickableLine : MonoBehaviour
 
     LineManager manager;
 
-    Color[] colors = new Color[] {Color.white, Color.red, Color.green, Color.blue};
-    int colorIndex;
-
-    Color isPrimaryLine;
+    Color uncolored = Color.white;
 
     public void Init(LineManager manager, (int, int) endpoint1, (int, int) endpoint2, bool isVertical){ //,bool isVertical
         this.manager = manager;
@@ -27,8 +24,7 @@ public class ClickableLine : MonoBehaviour
         this.endpoint2 = endpoint2;
         drawn = false;
 
-        colorIndex = 0;
-        GetComponent<Renderer>().material.color = colors[colorIndex];
+        GetComponent<Renderer>().material.color = uncolored;
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         //render the vertical one of the sprite
@@ -38,20 +34,28 @@ public class ClickableLine : MonoBehaviour
         // Debug.Log($"made line from {endpoint1} to {endpoint2}");
     }
 
-    public void Fill(Color isPrimary){
-        GetComponent<Renderer>().material.color = isPrimary;
-        Debug.Log("filled!");
-    }   
-
-    void OnMouseDown(){
-       
-        GetComponent<Renderer>().material.color = isPrimaryLine;
-
-        // TODO implement button to actually confirm
-        confirmClick();
+    public void Fill(Color color){
+        GetComponent<Renderer>().material.color = color;
     }
 
-    void confirmClick(){
+    public void Unfill(){
+        GetComponent<Renderer>().material.color = uncolored;
+    }
+
+    public bool getDrawn(){
+        return drawn;
+    }
+
+    void OnMouseDown(){
+        // show button
+        manager.showConfirmTurnButton(this);
+
+        // through line manager - for all lines, if not "drawn", back to uncolored
+        Fill(manager.getCurrentPlayerColor());
+    }
+
+    // called by confirm turn button and/or manager
+    public void confirmClick(){
         drawn = true;
         manager.checkForBoxAt(endpoint1, endpoint2);
     }
