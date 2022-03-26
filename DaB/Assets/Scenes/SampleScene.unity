@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1370189203}
   - component: {fileID: 1370189202}
   m_Layer: 0
-  m_Name: LineManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,14 +242,8 @@ MonoBehaviour:
   _dotPrefab: {fileID: 4497305822370041054, guid: 815fe60d340c74e6294f22800a88833a, type: 3}
   _confirmTurnButtonPrefab: {fileID: 9098269646172405092, guid: face7ccd908da4241abc874d1255a991, type: 3}
   _cam: {fileID: 519420032}
-  confirmTurnButton: {fileID: 0}
-  currentlySelectedMove: {fileID: 0}
-  isPrimary:
-    r: 0
-    g: 1
-    b: 0
-    a: 1
-  isPrimaryHelper: 1
+  currentColor: {r: 0, g: 1, b: 0, a: 1}
+  currentColorHelper: 1
 --- !u!4 &1370189203
 Transform:
   m_ObjectHideFlags: 0
