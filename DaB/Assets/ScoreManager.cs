@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public Text P1ScoreText;
     public Text P2ScoreText;
+    public Text turnText;
     int P1Score = 0;
     int P2Score = 0;
 
@@ -21,6 +22,7 @@ public class ScoreManager : MonoBehaviour
     {
         P1ScoreText.text = P1Score.ToString();
         P2ScoreText.text = P2Score.ToString();
+        turnText.text="Player 1's Turn";
 
     }
 
@@ -36,7 +38,9 @@ public class ScoreManager : MonoBehaviour
             P2Score+=1;
             P2ScoreText.text = P2Score.ToString();
 
+
         }
+        
         //if currentColorHelper==3 then endgame reached and scores will be reset, NEEDS TO BE IMPLEMENTED
         //IN GAMEMANAGER
         else{
@@ -44,8 +48,22 @@ public class ScoreManager : MonoBehaviour
             P2Score=0;
             P1ScoreText.text = P1Score.ToString();
             P2ScoreText.text = P2Score.ToString();
+            turnText.text="Game Over!";
+
         }
 
+    }
+
+    public void changePlayer(int currentColorHelper){
+        if(currentColorHelper==1){
+            turnText.text="Player 1's Turn";
+        }
+        else if(currentColorHelper==2){
+            turnText.text="Player 2's Turn";
+        }
+        else{
+            turnText.text="Game Over!";
+        }
     }
     // Update is called once per frame
     void Update()

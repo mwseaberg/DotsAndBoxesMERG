@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
         int x2;
         int y2;
         (x2, y2) = endpoint2;
-
+        
         //this fills selected lines with players colors
         _lines[(new Vector2(x1,y1), new Vector2(x2,y2))].Fill(currentColor);
         // Debug.Log($"{x1}, {y1}, {x2}, {y2}");
@@ -258,14 +258,16 @@ public class GameManager : MonoBehaviour
         switch(currentColorHelper){
             case 1:
                 currentColor = colorP2;
-                //isScoring = scoreP2;
                 currentColorHelper=2;
+                //changes 'Player 1/2's Turn' text
+                ScoreManager.instance.changePlayer(currentColorHelper);
                 break;
 
             case 2:
                 currentColor = colorP1;
-                //isScoring = scoreP1;
                 currentColorHelper=1;
+                //changes 'Player 1/2's Turn' text
+                ScoreManager.instance.changePlayer(currentColorHelper);
                 break;
         }
 
