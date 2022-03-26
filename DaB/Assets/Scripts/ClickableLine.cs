@@ -14,11 +14,11 @@ public class ClickableLine : MonoBehaviour
 
     bool drawn;
 
-    LineManager manager;
+    GameManager manager;
 
     Color uncolored = Color.white;
 
-    public void Init(LineManager manager, (int, int) endpoint1, (int, int) endpoint2, bool isVertical){ //,bool isVertical
+    public void Init(GameManager manager, (int, int) endpoint1, (int, int) endpoint2, bool isVertical){ //,bool isVertical
         this.manager = manager;
         this.endpoint1 = endpoint1;
         this.endpoint2 = endpoint2;
@@ -42,8 +42,17 @@ public class ClickableLine : MonoBehaviour
         GetComponent<Renderer>().material.color = uncolored;
     }
 
+    // accessor methods
     public bool getDrawn(){
         return drawn;
+    }
+
+    public (int, int) getEndpoint1(){
+        return endpoint1;
+    }
+
+    public (int, int) getEndpoint2(){
+        return endpoint2;
     }
 
     void OnMouseDown(){
@@ -54,10 +63,12 @@ public class ClickableLine : MonoBehaviour
         Fill(manager.getCurrentPlayerColor());
     }
 
-    // called by confirm turn button and/or manager
-    public void confirmClick(){
+    // mutator methods
+
+    // note: drawn should never be set to false after it has been set to true.
+    public void setDrawn(){
         drawn = true;
-        manager.checkForBoxAt(endpoint1, endpoint2);
+        // manager.checkForBoxAt(endpoint1, endpoint2);
     }
 
     public bool isDrawn(){

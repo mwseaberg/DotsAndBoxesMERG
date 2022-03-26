@@ -2,29 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _width, _height;
 
+    // prefabs
     [SerializeField] private ClickableLine _linePrefab;
     [SerializeField] private FillableSquare _squarePrefab;
     [SerializeField] private StaticDot _dotPrefab;
     [SerializeField] private ConfirmButton _confirmTurnButtonPrefab;
 
+    // camera
     [SerializeField] private Transform _cam;
 
+    // grid - lines and squares
     private Dictionary<(Vector2,Vector2), ClickableLine> _lines;
     private Dictionary<Vector2, FillableSquare> _squares;
 
     private ConfirmButton confirmTurnButton;
 
+    // keeps track of line player has clicked but not confirmed
     private ClickableLine currentlySelectedMove;
 
- //referencing p1 and p2 colors and holder var
+    //referencing p1 and p2 colors and holder var
+    // note: if/when we implement more than 2 players, we can refactor to an array implementation (array of colors, indices)
     [SerializeField] private static Color colorP1 = Color.green;
     [SerializeField] private static Color colorP2 = Color.red;
-    [SerializeField] private Color isPrimary = colorP1;
-    [SerializeField] private int isPrimaryHelper = 1;
+    [SerializeField] private Color currentColor = colorP1;
+    [SerializeField] private int currentColorHelper = 1;
+
     /*
     //score vars for p1 and p2
     [SerializeField] private int scoreP1;
@@ -37,12 +43,15 @@ public class LineManager : MonoBehaviour
     }
     */
 
+    // called once at start
     void Start() {
+        // *** set placement (geometry) of confirm button here!!
         confirmTurnButton = Instantiate(_confirmTurnButtonPrefab, new Vector3(0,0), Quaternion.identity);
         confirmTurnButton.setManager(this);
         GenerateGrid();
     }
    
+   // populate the game board with lines and squares
     void GenerateGrid() {
         _lines = new Dictionary<(Vector2,Vector2), ClickableLine>();
         _squares = new Dictionary<Vector2, FillableSquare>();
@@ -89,16 +98,18 @@ public class LineManager : MonoBehaviour
         _cam.transform.position = new Vector3((float)_width/2 -0.5f, (float)_height / 2 - 0.5f,-10);
     }
 
-
+    // TODO either start using this to access lines, or remove
     public ClickableLine GetTileAtPosition((Vector2,Vector2) pos) {
         if (_lines.TryGetValue(pos, out var line)) return line;
         return null;
     }
 
+    // accessor methods
     public Color getCurrentPlayerColor(){
-        return isPrimary;
+        return currentColor;
     }
 
+    // called after player clicks a line
     public void showConfirmTurnButton(ClickableLine current){
         // update knowledge of current move selection
         currentlySelectedMove = current;
@@ -112,14 +123,18 @@ public class LineManager : MonoBehaviour
         }
     }
 
+    // called after player clicks confirm button
     public void hideConfirmTurnButton(){
         // TODO - this won't make the button go away, I gotta figure out how to do that.
         // Destroy(confirmTurnButton);
 
         // confirm the move
-        currentlySelectedMove.confirmClick();
+        currentlySelectedMove.setDrawn();
+        checkForBoxAt(currentlySelectedMove.getEndpoint1(), currentlySelectedMove.getEndpoint2());
+        nextPlayerTurn();
     }
 
+    // fill in square(s) if all surrounding lines have been filled in
     public void checkForBoxAt((int, int) endpoint1, (int, int) endpoint2){
         // Debug.Log($"checking for box by {endpoint1}, {endpoint2}");
         int x1;
@@ -130,7 +145,7 @@ public class LineManager : MonoBehaviour
         (x2, y2) = endpoint2;
 
         //this fills selected lines with players colors
-        _lines[(new Vector2(x1,y1), new Vector2(x2,y2))].Fill(isPrimary);
+        _lines[(new Vector2(x1,y1), new Vector2(x2,y2))].Fill(currentColor);
         // Debug.Log($"{x1}, {y1}, {x2}, {y2}");
 
         if(x1==x2){
@@ -142,7 +157,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
-                    _squares[new Vector2(x1,y1)].Fill(isPrimary);
+                    _squares[new Vector2(x1,y1)].Fill(currentColor);
                 }
             }
 
@@ -151,7 +166,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1-1,y1)].Fill(isPrimary);
+                     _squares[new Vector2(x1-1,y1)].Fill(currentColor);
                 }
                 //check three corresponding lines pushing left, fill in appropriate squares
             }
@@ -163,14 +178,14 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1-1,y1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2-1,y2),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1-1,y1)].Fill(isPrimary);
+                     _squares[new Vector2(x1-1,y1)].Fill(currentColor);
                 }
 
                 //check right
                  if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
-                    _squares[new Vector2(x1,y1)].Fill(isPrimary);
+                    _squares[new Vector2(x1,y1)].Fill(currentColor);
                 }
 
 
@@ -185,7 +200,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1,y1)].Fill(isPrimary);
+                     _squares[new Vector2(x1,y1)].Fill(currentColor);
                 }
             }
             //case for line at top of board
@@ -195,7 +210,7 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1,y1-1)].Fill(isPrimary);
+                     _squares[new Vector2(x1,y1-1)].Fill(currentColor);
                 }
 
             }
@@ -206,13 +221,13 @@ public class LineManager : MonoBehaviour
                 if(_lines[(new Vector2(x1,y1),new Vector2(x1,y1+1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2,y2+1))].isDrawn()
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1,y1)].Fill(isPrimary);
+                     _squares[new Vector2(x1,y1)].Fill(currentColor);
                 }
 
                 if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
-                     _squares[new Vector2(x1,y1-1)].Fill(isPrimary);
+                     _squares[new Vector2(x1,y1-1)].Fill(currentColor);
                 }
 
             }
@@ -221,18 +236,21 @@ public class LineManager : MonoBehaviour
             Debug.Log("ERROR this should not happen");
         }
 
-        //switch case for isPrimary to swap between p1 and p2 colors/scoring variables for p1 and p2 
-        switch(isPrimaryHelper){
+    }
+
+    void nextPlayerTurn(){
+        //switch case for currentColor to swap between p1 and p2 colors/scoring variables for p1 and p2 
+        switch(currentColorHelper){
             case 1:
-                isPrimary = colorP2;
+                currentColor = colorP2;
                 //isScoring = scoreP2;
-                isPrimaryHelper=2;
+                currentColorHelper=2;
                 break;
 
             case 2:
-                isPrimary = colorP1;
+                currentColor = colorP1;
                 //isScoring = scoreP1;
-                isPrimaryHelper=1;
+                currentColorHelper=1;
                 break;
         }
 

@@ -5,9 +5,9 @@ using UnityEngine;
 public class ConfirmButton : MonoBehaviour
 {
 
-    LineManager manager;
+    GameManager manager;
 
-    public void setManager(LineManager manager){
+    public void setManager(GameManager manager){
         this.manager = manager;
     }
 
