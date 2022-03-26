@@ -42,12 +42,15 @@ public class ClickableLine : MonoBehaviour
         GetComponent<Renderer>().material.color = uncolored;
     }
 
-        void OnMouseDown(){
-        // show button
-        manager.showConfirmTurnButton(this);
+    void OnMouseDown(){
+        // conditional check - so if the line is already drawn, it doesn't get "drawn over" again
+        if(!drawn){
+            // show button
+            manager.showConfirmTurnButton(this);
 
-        // through line manager - for all lines, if not "drawn", back to uncolored
-        Fill(manager.getCurrentPlayerColor());
+            // through line manager - for all lines, if not "drawn", back to uncolored
+            Fill(manager.getCurrentPlayerColor());
+        }
     }
 
     // accessor methods
