@@ -158,6 +158,8 @@ public class GameManager : MonoBehaviour
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
                     _squares[new Vector2(x1,y1)].Fill(currentColor);
+                    //add point here
+                    ScoreManager.instance.addPoint(currentColorHelper);
                 }
             }
 
@@ -167,6 +169,8 @@ public class GameManager : MonoBehaviour
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1-1,y1)].Fill(currentColor);
+                     //add point here
+                    ScoreManager.instance.addPoint(currentColorHelper);
                 }
                 //check three corresponding lines pushing left, fill in appropriate squares
             }
@@ -179,13 +183,16 @@ public class GameManager : MonoBehaviour
                  && _lines[(new Vector2(x1-1,y1),new Vector2(x2-1,y2))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1-1,y1)].Fill(currentColor);
+                     //add point here
+                    ScoreManager.instance.addPoint(currentColorHelper);
                 }
 
                 //check right
                  if(_lines[(new Vector2(x1,y1),new Vector2(x1+1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2),new Vector2(x2+1,y2))].isDrawn()
                  && _lines[(new Vector2(x1+1,y1),new Vector2(x2+1,y2))].isDrawn()){
                      //fill in square here
-                    _squares[new Vector2(x1,y1)].Fill(currentColor);
+                    _squares[new Vector2(x1,y1)].Fill(currentColor);//add point here
+                    ScoreManager.instance.addPoint(currentColorHelper);
                 }
 
 
@@ -201,6 +208,8 @@ public class GameManager : MonoBehaviour
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1)].Fill(currentColor);
+                     //add point here
+                    ScoreManager.instance.addPoint(currentColorHelper);
                 }
             }
             //case for line at top of board
@@ -211,6 +220,8 @@ public class GameManager : MonoBehaviour
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1-1)].Fill(currentColor);
+                     //add point here
+                    ScoreManager.instance.addPoint(currentColorHelper);
                 }
 
             }
@@ -222,12 +233,16 @@ public class GameManager : MonoBehaviour
                  && _lines[(new Vector2(x1,y1+1),new Vector2(x2,y2+1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1)].Fill(currentColor);
+                     //add point here
+                    ScoreManager.instance.addPoint(currentColorHelper);
                 }
 
                 if(_lines[(new Vector2(x1,y1-1),new Vector2(x1,y1))].isDrawn() &&  _lines[(new Vector2(x2,y2-1),new Vector2(x2,y2))].isDrawn()
                  && _lines[(new Vector2(x1,y1-1),new Vector2(x2,y2-1))].isDrawn()){
                      //fill in square here
                      _squares[new Vector2(x1,y1-1)].Fill(currentColor);
+                     //add point here
+                    ScoreManager.instance.addPoint(currentColorHelper);
                 }
 
             }
