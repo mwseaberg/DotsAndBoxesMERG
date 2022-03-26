@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         // confirmTurnButton.SetActive(true);
         // for every line, if it's not confirmed to be drawn, un-draw it (since the player has just selected a line)
         foreach (KeyValuePair<(Vector2,Vector2), ClickableLine> entry in _lines){
-            if(!entry.Value.getDrawn()){
+            if(!entry.Value.isDrawn()){
                 entry.Value.Unfill();
             }
         }

@@ -42,8 +42,16 @@ public class ClickableLine : MonoBehaviour
         GetComponent<Renderer>().material.color = uncolored;
     }
 
+        void OnMouseDown(){
+        // show button
+        manager.showConfirmTurnButton(this);
+
+        // through line manager - for all lines, if not "drawn", back to uncolored
+        Fill(manager.getCurrentPlayerColor());
+    }
+
     // accessor methods
-    public bool getDrawn(){
+    public bool isDrawn(){
         return drawn;
     }
 
@@ -55,24 +63,11 @@ public class ClickableLine : MonoBehaviour
         return endpoint2;
     }
 
-    void OnMouseDown(){
-        // show button
-        manager.showConfirmTurnButton(this);
-
-        // through line manager - for all lines, if not "drawn", back to uncolored
-        Fill(manager.getCurrentPlayerColor());
-    }
-
     // mutator methods
 
     // note: drawn should never be set to false after it has been set to true.
     public void setDrawn(){
         drawn = true;
-        // manager.checkForBoxAt(endpoint1, endpoint2);
-    }
-
-    public bool isDrawn(){
-        return drawn;
     }
 
 }
