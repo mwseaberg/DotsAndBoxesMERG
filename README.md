@@ -16,7 +16,7 @@
 
 Dots and Boxes app made using Unity and AndroidStudio. Game Play functionality is created in Unity, all other pages created in AndroidStudio. Unity-created Game Play will be integrated into the AndroidStudio-created GamePlay Screen.  
 
-<ins>**Features:**</ins><br>
+<ins>**Features**</ins><br>
 - GamePlay Screen
   * Working game play
   * Confirm move functionality
