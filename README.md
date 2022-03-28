@@ -1,9 +1,21 @@
 # DotsAndBoxesMERG
 
-Currently developing v0.1.
+**Team**
 
-Features:
-- Fixed geometry
+Meredith - mwseaberg || gameplay
+Etry - eg79 || design
+Rina - Pixaurora || design
+Gregory - douglasgds || gameplay
+
+**Task Monitoring**
+
+[Trello board](https://trello.com/invite/b/Lzz5KTye/e94a21dfe1b84583d4e0a9e2b971ea72/dots-boxes-game)
+
+**v0.1**
+
+**Features:**
+- Working gameplay
+- 
 - Confirm move functionality
 - Multiplayer, turn functionality
 - Player icons
@@ -11,11 +23,4 @@ Features:
 
 Working in Unity and (later) Android Studio.
 
-[Trello board](https://trello.com/invite/b/Lzz5KTye/e94a21dfe1b84583d4e0a9e2b971ea72/dots-boxes-game) - for task monitoring
 
-Team Roles (working list)
-
-- Meredith - gameplay
-- Etry - design
-- Rina - design
-- Greg - gameplay
