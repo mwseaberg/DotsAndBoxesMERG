@@ -26,9 +26,9 @@ Dots and Boxes app made using Unity and AndroidStudio. Game Play functionality i
   * Navigation to How To Play Screen or GamePlay
 - How To Play Screen
   * Written instructions 
-  * video tutorial
+  * Video tutorial
 - Game Settings Screen
-  * navigation to GamePlay Screen 
+  * Navigation to GamePlay Screen 
   * This screen to be updated with integration of gamplay
 
 
