@@ -10,7 +10,7 @@
 | douglasgds | Gregory              | gameplay    |
 
 -----------------------------------------------------
-**v0.1**
+### v0.1
 
 **Features:**
 - Working gameplay
