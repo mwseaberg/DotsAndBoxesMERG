@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     // called once at start
     void Start() {
         // *** set placement (geometry) of confirm button here!!
-        confirmTurnButton = Instantiate(_confirmTurnButtonPrefab, new Vector3(0,0), Quaternion.identity);
+        confirmTurnButton = Instantiate(_confirmTurnButtonPrefab, new Vector3(-4,0), Quaternion.identity);
         confirmTurnButton.setManager(this);
         GenerateGrid();
     }
