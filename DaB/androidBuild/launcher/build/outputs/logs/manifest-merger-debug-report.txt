@@ -1,0 +1,61 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+	package
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:70-101
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:102-148
+	android:versionCode
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:1-6:12
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:11-69
+	android:installLocation
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:3:149-189
+supports-screens
+ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:4:3-163
+	android:largeScreens
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:4:78-105
+	android:smallScreens
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:4:21-48
+	android:normalScreens
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:4:49-77
+	android:xlargeScreens
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:4:106-134
+	android:anyDensity
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:4:135-160
+application
+ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:5:3-116
+	android:extractNativeLibs
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:5:16-48
+	android:label
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:5:49-81
+	android:icon
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml:5:82-113
+uses-sdk
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+		ADDED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
+		INJECTED from /Volumes/My Passport for Mac/git_repos/DotsAndBoxesMERG/DaB/androidBuild/launcher/src/main/AndroidManifest.xml
