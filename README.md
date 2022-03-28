@@ -1,16 +1,13 @@
 # DotsAndBoxesMERG
 
-**Team**             **Role**
-
-Meredith (mwseaberg) || gameplay<br> 
-Etry (eg79)          || design<br>
-Rina (Pixaurora)     || design<br>
-Gregory (douglasgds) || gameplay<br>
 
 | Team                 | Role        |
 | -------------------- | ----------- |
-| Meredith (mwseaberg) | Title       |
-| Paragraph            | Text        |
+| Meredith (mwseaberg) | gameplay    |
+| Etry (eg79)          | design      |
+| Rina (Pixaurora)     | design      |
+| Gregory (douglasgds) | gameplay    |
+
 
 **Task Monitoring** :: [Trello board](https://trello.com/invite/b/Lzz5KTye/e94a21dfe1b84583d4e0a9e2b971ea72/dots-boxes-game)<br>
 
