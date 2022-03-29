@@ -21,14 +21,6 @@ public class GameSettings extends AppCompatActivity {
                 openGamePlay();
             }
         });
-
-        Button buttonCancel = (Button) findViewById(R.id.buttonCancel);
-        buttonCancel.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                openHomePage();
-            }
-        });
     }
 
     public void openGamePlay(){
