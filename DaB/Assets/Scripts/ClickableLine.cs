@@ -46,9 +46,10 @@ public class ClickableLine : MonoBehaviour
         // conditional check - so if the line is already drawn, it doesn't get "drawn over" again
         if(!drawn){
             // show button
-            manager.showConfirmTurnButton(this);
+            // through manager - for all lines, if not "drawn", back to uncolored
+            manager.promptEndTurn(this);
 
-            // through line manager - for all lines, if not "drawn", back to uncolored
+            // after uncoloring prev line, color this one (temporarily until confirmed)
             Fill(manager.getCurrentPlayerColor());
         }
     }

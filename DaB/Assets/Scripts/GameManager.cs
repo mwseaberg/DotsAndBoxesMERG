@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     }
 
     // called after player clicks a line
-    public void showConfirmTurnButton(ClickableLine current){
+    public void promptEndTurn(ClickableLine current){
         // update knowledge of current move selection
         currentlySelectedMove = current;
 
@@ -121,14 +121,17 @@ public class GameManager : MonoBehaviour
                 entry.Value.Unfill();
             }
         }
+
+        confirmTurnButton.enable();
     }
 
     // called after player clicks confirm button
-    public void hideConfirmTurnButton(){
+    public void endTurn(){
         // TODO - this won't make the button go away, I gotta figure out how to do that.
         // Destroy(confirmTurnButton);
 
         // confirm the move
+        confirmTurnButton.disable();
         currentlySelectedMove.setDrawn();
         checkForBoxAt(currentlySelectedMove.getEndpoint1(), currentlySelectedMove.getEndpoint2());
         nextPlayerTurn();
