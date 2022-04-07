@@ -34,54 +34,54 @@
         app:rippleColor="#21452E" />
 
     <ImageView
-        android:id="@+id/p1Icon"
+        android:id="@+id/p1Color"
         android:layout_width="111dp"
         android:layout_height="111dp"
         android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/p1Label"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonP1PrevIcon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:text="P"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/buttonP1NextIcon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/p1Icon2" />
+        app:layout_constraintTop_toBottomOf="@+id/p1Icon" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonP1NextIcon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="N"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/p1Icon2" />
+        app:layout_constraintStart_toEndOf="@+id/buttonP1PrevIcon"
+        app:layout_constraintTop_toBottomOf="@+id/p1Icon" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonP1Color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="60dp"
         android:text="pick color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/p1Icon" />
+        app:layout_constraintTop_toBottomOf="@+id/p1Color" />
 
     <ImageView
-        android:id="@+id/p1Icon2"
+        android:id="@+id/p1Icon"
         android:layout_width="111dp"
         android:layout_height="111dp"
         android:layout_marginStart="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/p1Label"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:src="@drawable/frog" />
 
     <TextView
         android:id="@+id/p1Label"

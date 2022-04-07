@@ -21,6 +21,23 @@ public class GameSettings extends AppCompatActivity {
                 openGamePlay();
             }
         });
+
+        // set listeners for < > icon buttons
+        Button buttonP1PrevIcon = (Button) findViewById(R.id.buttonP1PrevIcon);
+        buttonP1PrevIcon.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                p1PrevIcon();
+            }
+        });
+        Button buttonP1NextIcon = (Button) findViewById(R.id.buttonP1NextIcon);
+        buttonP1NextIcon.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                p1NextIcon();
+            }
+        });
+
     }
 
     public void openGamePlay(){
@@ -30,6 +47,14 @@ public class GameSettings extends AppCompatActivity {
     public void openHomePage(){
         Intent intent  = new Intent(this, HomePage.class);
         startActivity(intent);
+    }
+
+    public void p1PrevIcon(){
+
+    }
+
+    public void p1NextIcon(){
+
     }
 
 }
