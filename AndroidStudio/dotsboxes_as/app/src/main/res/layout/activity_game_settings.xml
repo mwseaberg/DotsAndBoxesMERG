@@ -33,14 +33,18 @@
         app:layout_constraintVertical_bias="0.939"
         app:rippleColor="#21452E" />
 
-    <ImageView
+    <View
         android:id="@+id/p1Color"
         android:layout_width="111dp"
         android:layout_height="111dp"
-        android:layout_marginEnd="60dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="100dp"
+        android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/p1Label"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintStart_toEndOf="@+id/p1Icon"
+        app:layout_constraintTop_toBottomOf="@+id/p1Label" />
 
     <Button
         android:id="@+id/buttonP1PrevIcon"
@@ -64,21 +68,25 @@
         app:layout_constraintStart_toEndOf="@+id/buttonP1PrevIcon"
         app:layout_constraintTop_toBottomOf="@+id/p1Icon" />
 
-    <Button
-        android:id="@+id/buttonP1Color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:text="pick color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/p1Color" />
+<!--    <Button-->
+<!--        android:id="@+id/buttonP1Color"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="60dp"-->
+<!--        android:text="pick color"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/p1Color" />-->
 
     <ImageView
         android:id="@+id/p1Icon"
         android:layout_width="111dp"
         android:layout_height="111dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonP1PrevIcon"
+        app:layout_constraintEnd_toStartOf="@+id/p1Color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/p1Label"
         tools:src="@drawable/frog" />

@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameSettings extends AppCompatActivity {
 
+    private Button					mOkButton;
+    private Button					mCancelButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +25,10 @@ public class GameSettings extends AppCompatActivity {
             }
         });
 
-        // set listeners for < > icon buttons
+//        Button mPickColorButton = findViewById(R.id.buttonP1Color);
+        Button mSetColorButton = findViewById(R.id.buttonPlay);
+
+        // < > icon buttons
         Button buttonP1PrevIcon = (Button) findViewById(R.id.buttonP1PrevIcon);
         buttonP1PrevIcon.setOnClickListener( new View.OnClickListener(){
             @Override
@@ -37,6 +43,9 @@ public class GameSettings extends AppCompatActivity {
                 p1NextIcon();
             }
         });
+
+        // pick color
+        View mColorPreview = findViewById(R.id.p1Color);
 
     }
 
