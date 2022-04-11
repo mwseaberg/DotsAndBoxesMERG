@@ -92,8 +92,8 @@
 
     <com.example.dotsboxes_as.view.GameView
         android:id="@+id/gameView"
-        android:layout_width="411dp"
-        android:layout_height="613dp"
+        android:layout_width="wrap_content"
+        android:layout_height="463dp"
         android:layout_marginTop="16dp"
         android:layout_weight="1" />
 

@@ -5,7 +5,7 @@ import java.util.Observable;
 public class Graph extends Observable {
     private Player[] players;
     private int currentPlayerIndex;
-    private int width;
+    private int width ;
     private int height;
     private Player[][] occupied;
     private int[][] horizontalLines;
