@@ -32,8 +32,10 @@ public class GameSettings extends AppCompatActivity {
         iconColorMappings.add(new IconColor(R.drawable.cat, Color.RED));
     }
 
-    View iconView;
-    View colorView;
+    View p1_iconView;
+    View p1_colorView;
+    View p2_iconView;
+    View p2_colorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +43,16 @@ public class GameSettings extends AppCompatActivity {
         setContentView(R.layout.activity_game_settings);
 
         Button buttonPlay = (Button) findViewById(R.id.buttonPlay);
-        Button buttonP1PrevIcon = (Button) findViewById(R.id.buttonP1PrevIcon);
-        Button buttonP1NextIcon = (Button) findViewById(R.id.buttonP1NextIcon);
 
-        iconView = (View) findViewById(R.id.p1Icon);
-        colorView = (View) findViewById(R.id.p1Color);
+        Button p1_Prev = (Button) findViewById(R.id.buttonP1PrevIcon);
+        Button p1_Next = (Button) findViewById(R.id.buttonP1NextIcon);
+        Button p2_Prev = (Button) findViewById(R.id.buttonP2PrevIcon);
+        Button p2_Next = (Button) findViewById(R.id.buttonP2NextIcon);
+
+        p1_iconView = (View) findViewById(R.id.p1Icon);
+        p1_colorView = (View) findViewById(R.id.p1Color);
+        p2_iconView = (View) findViewById(R.id.p2Icon);
+        p2_colorView = (View) findViewById(R.id.p2Color);
 
         buttonPlay.setOnClickListener( new View.OnClickListener(){
             @Override
@@ -53,25 +60,43 @@ public class GameSettings extends AppCompatActivity {
                 openGamePlay();
             }
         });
-        buttonP1PrevIcon.setOnClickListener( new View.OnClickListener(){
+        p1_Prev.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                p1PrevIcon();
+                updateIndex(1, p1Index-1);
             }
         });
-        buttonP1NextIcon.setOnClickListener( new View.OnClickListener(){
+        p1_Next.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                p1NextIcon();
+                updateIndex(1, p1Index+1);
             }
         });
+        p2_Prev.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                updateIndex(2, p2Index-1);
+            }
+        });
+        p2_Next.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                updateIndex(2, p2Index+1);
+            }
+        });
+
+        setIconColorMappings();
 
         p1Index = 0;
         p2Index = 0;
 
-        setIconColorMappings();
-        iconView.setBackgroundResource(iconColorMappings.get(p1Index).iconAddress);
-        colorView.setBackgroundColor(iconColorMappings.get(p1Index).color);
+        updateIndex(1,p1Index);
+        updateIndex(2,p2Index);
+
+//        p1_iconView.setBackgroundResource(iconColorMappings.get(p1Index).iconAddress);
+//        p1_colorView.setBackgroundColor(iconColorMappings.get(p1Index).color);
+//        p2_iconView.setBackgroundResource(iconColorMappings.get(p2Index).iconAddress);
+//        p2_colorView.setBackgroundColor(iconColorMappings.get(p2Index).color);
 
     }
 
@@ -79,20 +104,8 @@ public class GameSettings extends AppCompatActivity {
         Intent intent  = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void openHomePage(){
-        Intent intent  = new Intent(this, HomePage.class);
-        startActivity(intent);
-    }
 
     // TODO: note, should not be able to select both as the same icon (OR maybe it's fine?)
-
-    public void p1PrevIcon(){
-        updateIndex(1, p1Index-1);
-    }
-
-    public void p1NextIcon(){
-        updateIndex(1, p1Index+1);
-    }
 
     private void updateIndex(int player, int index){
         if(1==player){
@@ -103,10 +116,18 @@ public class GameSettings extends AppCompatActivity {
             } else if(p1Index>iconColorMappings.size()-1){
                 p1Index = 0;
             }
-            iconView.setBackgroundResource(iconColorMappings.get(p1Index).iconAddress);
-            colorView.setBackgroundColor(iconColorMappings.get(p1Index).color);
+            p1_iconView.setBackgroundResource(iconColorMappings.get(p1Index).iconAddress);
+            p1_colorView.setBackgroundColor(iconColorMappings.get(p1Index).color);
         } else {
-            // TODO
+            p2Index = index;
+            // loop start and end
+            if(p2Index<0){
+                p2Index = iconColorMappings.size()-1;
+            } else if(p2Index>iconColorMappings.size()-1){
+                p2Index = 0;
+            }
+            p2_iconView.setBackgroundResource(iconColorMappings.get(p2Index).iconAddress);
+            p2_colorView.setBackgroundColor(iconColorMappings.get(p2Index).color);
         }
     }
 
