@@ -28,8 +28,8 @@ public class GameSettings extends AppCompatActivity {
     int p2Index;
 
     private void setIconColorMappings(){
-        iconColorMappings.add(new IconColor(R.drawable.frog, Color.GREEN));
-        iconColorMappings.add(new IconColor(R.drawable.cat, Color.RED));
+        iconColorMappings.add(new IconColor(R.drawable.frog, getResources().getColor(R.color.colorPrimary)));
+        iconColorMappings.add(new IconColor(R.drawable.cat, getResources().getColor(R.color.colorAccent)));
     }
 
     View p1_iconView;

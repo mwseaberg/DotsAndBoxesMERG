@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
         player2occupying = (TextView) findViewById(R.id.player2occupying);
         currentPlayerPointer = (ImageView) findViewById(R.id.playerNowPointer);
 
-        players = new Player[]{new HumanPlayer("Human"), new RandomAIPlayer("Computer")};
+        players = new Player[]{new HumanPlayer("Player 1"), new HumanPlayer("Player 2")};
         startGame(players);
     }
 
@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
             @Override
             public void run() {
                 if (currentPlayer == players[0]) {
-                    player1state.setText("Thinking");
-                    player2state.setText("Waiting");
+                   // player1state.setText("Thinking");
+                   // player2state.setText("Waiting");
                     currentPlayerPointer.setImageResource(R.drawable.a1);
                 } else if (currentPlayer == players[1]) {
-                    player2state.setText("Thinking");
-                    player1state.setText("Waiting");
+                   // player2state.setText("Thinking");
+                   // player1state.setText("Waiting");
                     currentPlayerPointer.setImageResource(R.drawable.a2);
                 }
                 player1occupying.setText("Score " + playersOccupying[0]);
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
                                     //nothing
                                 }
                             })
-                            .setNeutralButton("Human", new DialogInterface.OnClickListener() {
+                            .setNeutralButton("New Game", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     players = new Player[]{new HumanPlayer("Player 1"), new HumanPlayer("Player 2")};

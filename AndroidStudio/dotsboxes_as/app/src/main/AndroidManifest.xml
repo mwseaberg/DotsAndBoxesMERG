@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name="com.example.dotsboxes_as.HowToPlay"
-            android:label="Preferences"
+            android:label="Menu"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.dotsboxes_as.HowToPlay" />
@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name="com.example.dotsboxes_as.GameSettings"
-            android:label="Preferences"
+            android:label="Menu"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.dotsboxes_as.GameSettings" />
@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name="com.example.dotsboxes_as.MainActivity"
-            android:label="Preferences"
+            android:label="Menu"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.dotsboxes_as.MainActivity" />
