@@ -12,25 +12,10 @@ import java.util.ArrayList;
 
 public class GameSettings extends AppCompatActivity {
 
-    class IconColor{
-        int iconAddress;
-        int color;
-
-        public IconColor(int iconAddress, int color) {
-            this.iconAddress = iconAddress;
-            this.color = color;
-        }
-    }
-
-    private final ArrayList<IconColor> iconColorMappings = new ArrayList();
-
     int p1Index;
     int p2Index;
 
-    private void setIconColorMappings(){
-        iconColorMappings.add(new IconColor(R.drawable.frog, getResources().getColor(R.color.colorPrimary)));
-        iconColorMappings.add(new IconColor(R.drawable.cat, getResources().getColor(R.color.colorAccent)));
-    }
+    SharedInformation information = new SharedInformation();
 
     View p1_iconView;
     View p1_colorView;
@@ -85,8 +70,6 @@ public class GameSettings extends AppCompatActivity {
             }
         });
 
-        setIconColorMappings();
-
         p1Index = 0;
         p2Index = 0;
 
@@ -102,6 +85,8 @@ public class GameSettings extends AppCompatActivity {
 
     public void openGamePlay(){
         Intent intent  = new Intent(this, MainActivity.class);
+        intent.putExtra("P1_ICON_COLOR_PICK", p1Index);
+        intent.putExtra("P2_ICON_COLOR_PICK", p2Index);
         startActivity(intent);
     }
 
@@ -112,22 +97,22 @@ public class GameSettings extends AppCompatActivity {
             p1Index = index;
             // loop start and end
             if(p1Index<0){
-                p1Index = iconColorMappings.size()-1;
-            } else if(p1Index>iconColorMappings.size()-1){
+                p1Index = information.getIconColorMappingsLength()-1;
+            } else if(p1Index>information.getIconColorMappingsLength()-1){
                 p1Index = 0;
             }
-            p1_iconView.setBackgroundResource(iconColorMappings.get(p1Index).iconAddress);
-            p1_colorView.setBackgroundColor(iconColorMappings.get(p1Index).color);
+            p1_iconView.setBackgroundResource(information.getIconColorMappings()[p1Index].iconAddress);
+            p1_colorView.setBackgroundColor(information.getIconColorMappings()[p1Index].color);
         } else {
             p2Index = index;
             // loop start and end
             if(p2Index<0){
-                p2Index = iconColorMappings.size()-1;
-            } else if(p2Index>iconColorMappings.size()-1){
+                p2Index = information.getIconColorMappingsLength()-1;
+            } else if(p2Index>information.getIconColorMappingsLength()-1){
                 p2Index = 0;
             }
-            p2_iconView.setBackgroundResource(iconColorMappings.get(p2Index).iconAddress);
-            p2_colorView.setBackgroundColor(iconColorMappings.get(p2Index).color);
+            p2_iconView.setBackgroundResource(information.getIconColorMappings()[p2Index].iconAddress);
+            p2_colorView.setBackgroundColor(information.getIconColorMappings()[p2Index].color);
         }
     }
 

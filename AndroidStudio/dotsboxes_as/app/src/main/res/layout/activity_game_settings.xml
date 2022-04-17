@@ -71,7 +71,7 @@
         android:id="@+id/textView"
         android:layout_width="354dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="28dp"
         android:gravity="center"
         android:text="Game Setup"
@@ -83,8 +83,8 @@
 
     <Button
         android:id="@+id/buttonPlay"
-        android:layout_width="289dp"
-        android:layout_height="88dp"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="5dp"
         android:text="Start"
         android:textSize="30sp"
