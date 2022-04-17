@@ -35,5 +35,13 @@ public class SharedInformation {
         return iconColorMappings.length;
     }
 
+    public int getAddress(int index){
+        return iconColorMappings[index].iconAddress;
+    }
+
+    public int getColor(int index){
+        return iconColorMappings[index].color;
+    }
+
 
 }

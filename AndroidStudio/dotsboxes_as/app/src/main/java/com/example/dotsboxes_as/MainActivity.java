@@ -28,10 +28,21 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
     Integer[] playersOccupying = new Integer[]{0, 0};
     Player currentPlayer;
 
+    SharedInformation information = new SharedInformation();
+    int p1Index;
+    int p2Index;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // setup for getting player icons/colors
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            p1Index = extras.getInt("P1_ICON_COLOR_PICK");
+            p2Index = extras.getInt("P2_ICON_COLOR_PICK");
+        }
 
         gameView = (GameView) findViewById(R.id.gameView);
         gameView.setPlayersState(this);
@@ -50,7 +61,8 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
 
     private void startGame(Player[] players) {
         gameView.startGame(players);
-        updateState();
+        setCurrentPlayer(players[0]);
+//        updateState();
     }
 
     public void updateState() {
@@ -60,11 +72,13 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
                 if (currentPlayer == players[0]) {
                    // player1state.setText("Thinking");
                    // player2state.setText("Waiting");
-                    currentPlayerPointer.setImageResource(R.drawable.a1);
+//                    currentPlayerPointer.setImageResource(R.drawable.a1);
+                    currentPlayerPointer.setImageResource(information.getAddress(p1Index));
                 } else if (currentPlayer == players[1]) {
                    // player2state.setText("Thinking");
                    // player1state.setText("Waiting");
-                    currentPlayerPointer.setImageResource(R.drawable.a2);
+//                    currentPlayerPointer.setImageResource(R.drawable.a2);
+                    currentPlayerPointer.setImageResource(information.getAddress(p2Index));
                 }
                 player1occupying.setText("Score " + playersOccupying[0]);
                 player2occupying.setText("Score " + playersOccupying[1]);

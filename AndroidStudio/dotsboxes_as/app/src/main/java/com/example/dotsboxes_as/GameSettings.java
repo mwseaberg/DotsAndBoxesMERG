@@ -90,7 +90,7 @@ public class GameSettings extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // TODO: note, should not be able to select both as the same icon (OR maybe it's fine?)
+    // TODO: note, should not be able to select both as the same icon ***
 
     private void updateIndex(int player, int index){
         if(1==player){
