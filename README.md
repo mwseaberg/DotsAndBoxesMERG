@@ -14,13 +14,13 @@
 
 <ins>**Notes**</ins> <br>
 
-Dots and Boxes app made using Unity and AndroidStudio. Game Play functionality is created in Unity, all other pages created in AndroidStudio. Unity-created Game Play will be integrated into the AndroidStudio-created GamePlay Screen.  
+Dots and Boxes app made using Android Studio.
 
 <ins>**Features**</ins><br>
+- TODO update this
 - GamePlay Screen
   * Working game play
-  * Confirm move functionality
-  * Multiplayer with turn functionality
+  * 2 player functionality
   * Player icons
 - Home Screen
   * Navigation to How To Play Screen or GamePlay
