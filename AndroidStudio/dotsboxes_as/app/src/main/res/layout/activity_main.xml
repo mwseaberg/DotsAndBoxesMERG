@@ -87,7 +87,7 @@
         android:id="@+id/gameView"
         android:layout_width="wrap_content"
         android:layout_height="463dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="0dp"
         android:layout_weight="0" />
 
     <TextView
@@ -95,18 +95,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/cat" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:src="@tools:sample/avatars" />
 
 </LinearLayout>
 
