@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
         gameView = (GameView) findViewById(R.id.gameView);
         gameView.setPlayersState(this);
 
+        gameView.setColors(p1Index, p2Index);
+
         player1name = (TextView) findViewById(R.id.player1name);
         player2name = (TextView) findViewById(R.id.player2name);
         player1state = (TextView) findViewById(R.id.player1state);

@@ -19,6 +19,7 @@ public class SharedInformation {
 
 //    private final ArrayList<IconColor> iconColorMappings = new ArrayList();
 
+
     private final IconColor[] iconColorMappings = { new IconColor(R.drawable.frog, Color.GREEN),
                                                     new IconColor(R.drawable.cat, Color.YELLOW) };
 
@@ -42,6 +43,4 @@ public class SharedInformation {
     public int getColor(int index){
         return iconColorMappings[index].color;
     }
-
-
 }

@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.dotsboxes_as.R;
+import com.example.dotsboxes_as.SharedInformation;
 import com.example.dotsboxes_as.model.Direction;
 import com.example.dotsboxes_as.model.Graph;
 import com.example.dotsboxes_as.model.HumanPlayer;
@@ -31,7 +32,7 @@ public class GameView extends View implements Observer {
     protected static final float add5 = (float) 159 / 824;
     protected static final float add6 = (float) 9 / 824;
 
-    protected final int[] playerColors;
+    protected int[] playerColors;
     protected Graph game;
     protected Line move;
     protected Paint paint;
@@ -50,14 +51,21 @@ public class GameView extends View implements Observer {
             }
         });
 
-        playerColors = new int[]{getResources().getColor(R.color.colorPrimary),
-                getResources().getColor(R.color.colorAccent)};
+        // NOTE these get rewritten, maybe remove this line
+//        playerColors = new int[]{getResources().getColor(R.color.colorPrimary),
+//                getResources().getColor(R.color.colorAccent)};
         //colorAccent = pink
         //colorPrimary = blue
     }
 
     public void setPlayersState(PlayersStateView playersState) {
         this.playersState = playersState;
+    }
+
+    public void setColors(int p1ColorIndex, int p2ColorIndex){
+        SharedInformation information = new SharedInformation();
+        playerColors = new int[]{information.getColor(p1ColorIndex),
+                information.getColor(p2ColorIndex)};
     }
 
     public void startGame(Player[] players) {
