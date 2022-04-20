@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -84,10 +85,14 @@ public class GameSettings extends AppCompatActivity {
     }
 
     public void openGamePlay(){
-        Intent intent  = new Intent(this, MainActivity.class);
-        intent.putExtra("P1_ICON_COLOR_PICK", p1Index);
-        intent.putExtra("P2_ICON_COLOR_PICK", p2Index);
-        startActivity(intent);
+        if(p1Index==p2Index){
+            Toast.makeText(getApplicationContext(), "Players cannot use the same icon!", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("P1_ICON_COLOR_PICK", p1Index);
+            intent.putExtra("P2_ICON_COLOR_PICK", p2Index);
+            startActivity(intent);
+        }
     }
 
     // TODO: note, should not be able to select both as the same icon ***
