@@ -1,5 +1,8 @@
 package com.example.dotsboxes_as;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.floorMod;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -49,33 +52,33 @@ public class GameSettings extends AppCompatActivity {
         p1_Prev.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                updateIndex(1, p1Index-1);
+                updateIndex(1, -1);
             }
         });
         p1_Next.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                updateIndex(1, p1Index+1);
+                updateIndex(1, +1);
             }
         });
         p2_Prev.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                updateIndex(2, p2Index-1);
+                updateIndex(2, -1);
             }
         });
         p2_Next.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                updateIndex(2, p2Index+1);
+                updateIndex(2, +1);
             }
         });
 
         p1Index = 0;
         p2Index = 0;
 
-        updateIndex(1,p1Index);
-        updateIndex(2,p2Index);
+        updateIndex(1,0);
+        updateIndex(2,1);
 
 //        p1_iconView.setBackgroundResource(iconColorMappings.get(p1Index).iconAddress);
 //        p1_colorView.setBackgroundColor(iconColorMappings.get(p1Index).color);
@@ -97,24 +100,18 @@ public class GameSettings extends AppCompatActivity {
 
     // TODO: note, should not be able to select both as the same icon ***
 
-    private void updateIndex(int player, int index){
+    private void updateIndex(int player, int increase){
         if(1==player){
-            p1Index = index;
-            // loop start and end
-            if(p1Index<0){
-                p1Index = information.getIconColorMappingsLength()-1;
-            } else if(p1Index>information.getIconColorMappingsLength()-1){
-                p1Index = 0;
+            p1Index = Math.floorMod(p1Index+increase, information.getIconColorMappingsLength());
+            if (p2Index == p1Index) {
+                p1Index = Math.floorMod(p2Index+increase, information.getIconColorMappingsLength());
             }
             p1_iconView.setBackgroundResource(information.getIconColorMappings()[p1Index].iconAddress);
             p1_colorView.setBackgroundColor(information.getIconColorMappings()[p1Index].color);
         } else {
-            p2Index = index;
-            // loop start and end
-            if(p2Index<0){
-                p2Index = information.getIconColorMappingsLength()-1;
-            } else if(p2Index>information.getIconColorMappingsLength()-1){
-                p2Index = 0;
+            p2Index = Math.floorMod(p2Index+increase, information.getIconColorMappingsLength());
+            if (p2Index == p1Index) {
+                p2Index = Math.floorMod(p2Index+increase, information.getIconColorMappingsLength());
             }
             p2_iconView.setBackgroundResource(information.getIconColorMappings()[p2Index].iconAddress);
             p2_colorView.setBackgroundColor(information.getIconColorMappings()[p2Index].color);
