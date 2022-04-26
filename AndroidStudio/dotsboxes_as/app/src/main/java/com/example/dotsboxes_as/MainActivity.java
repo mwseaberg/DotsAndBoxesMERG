@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -59,6 +61,32 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
 
         players = new Player[]{new HumanPlayer("Player 1"), new HumanPlayer("Player 2")};
         startGame(players);
+
+        //new game button
+        Button buttonHow = (Button) findViewById(R.id.NewGame);
+        buttonHow.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Dots And Boxes")
+                                .setMessage("This will clear the game board.")
+                                .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        recreate();
+                                    }
+                                })
+                                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
+                    }
+                });
+            }
+        });
     }
 
     private void startGame(Player[] players) {

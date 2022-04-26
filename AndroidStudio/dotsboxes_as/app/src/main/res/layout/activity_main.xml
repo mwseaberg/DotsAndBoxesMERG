@@ -96,5 +96,11 @@
         android:layout_gravity="center"
         android:text="" />
 
+    <Button
+        android:id="@+id/NewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="@string/button" />
+
 </LinearLayout>
 
