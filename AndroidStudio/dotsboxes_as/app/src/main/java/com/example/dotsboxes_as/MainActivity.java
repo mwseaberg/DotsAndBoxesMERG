@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Dots And Boxes")
                         .setMessage(winner.getName() + " Wins!")
-                        .setPositiveButton("Restart", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("New Game", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 recreate();
                             }
