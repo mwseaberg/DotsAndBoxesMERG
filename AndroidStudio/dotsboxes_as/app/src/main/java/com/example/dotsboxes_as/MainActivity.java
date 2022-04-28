@@ -1,5 +1,6 @@
 package com.example.dotsboxes_as;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -87,6 +88,11 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
                 });
             }
         });
+
+        //hide top title bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
     }
 
     private void startGame(Player[] players) {

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -85,6 +86,10 @@ public class GameSettings extends AppCompatActivity {
 //        p2_iconView.setBackgroundResource(iconColorMappings.get(p2Index).iconAddress);
 //        p2_colorView.setBackgroundColor(iconColorMappings.get(p2Index).color);
 
+
+        //hide top title bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
     }
 
     public void openGamePlay(){

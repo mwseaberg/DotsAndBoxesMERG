@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HomePage extends AppCompatActivity {
@@ -35,6 +36,10 @@ public class HomePage extends AppCompatActivity {
             }
 
         });
+
+        //hide top title bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
     }
 
