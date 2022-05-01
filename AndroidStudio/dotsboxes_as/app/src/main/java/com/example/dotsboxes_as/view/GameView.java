@@ -144,7 +144,7 @@ public class GameView extends View implements Observer {
         }
 
         //paint points
-        paint.setColor(getResources().getColor(R.color.colorAccent)); //pink
+        paint.setColor(Color.BLACK);
         for (int i = 0; i < game.getHeight() + 1; i++) {
             for (int j = 0; j < game.getWidth() + 1; j++) {
                 canvas.drawCircle(start + add6 + j * add5 + 1, start + add6 + i * add5 + 1,
