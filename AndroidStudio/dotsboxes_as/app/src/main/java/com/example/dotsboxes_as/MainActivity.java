@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -84,6 +86,33 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                     }
                                 }).show();
+
+
+                    }
+                });
+            }
+        });
+
+        //tutorial button
+        ImageButton buttonTutorial = (ImageButton) findViewById(R.id.tutorialButton);
+        buttonTutorial.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Dots And Boxes Tutorial")
+
+                                .setMessage("Players alternate placing a line on the gameboard.\n\n" +
+                                        "If the player creates a square, their score is increased by 1 and the scoring player goes again.\n\n" +
+                                        "The player that creates the most squares wins!")
+
+                                .setNeutralButton("Close", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
                     }
                 });
             }
@@ -93,6 +122,11 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+    }
+
+    public void openGameSettings(){
+        Intent intent  = new Intent(this, GameSettings.class);
+        startActivity(intent);
     }
 
     private void startGame(Player[] players) {
