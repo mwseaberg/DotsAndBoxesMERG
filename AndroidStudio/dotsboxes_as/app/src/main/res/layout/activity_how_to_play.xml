@@ -4,31 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dotsboxes_as.HowToPlay">
+    tools:context="com.example.dotsboxes_as.HowToPlay"
+    android:background="#210D42">
 
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="164dp"
-        android:text="Rules"
-        android:textSize="34sp"
+        android:layout_marginEnd="68dp"
+        android:fontFamily="@font/arcade"
+        android:gravity="center"
+        android:text="How To Play"
+        android:textColor="#D129DD"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.088" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="350dp"
         android:layout_height="200dp"
+        android:fontFamily="@font/arcadeclassic"
         android:inputType="textMultiLine"
-        android:text="1. The goal of each player is to close as many boxes as they can.\n 2. The person with the most boxes wins the game. \n 3. You and your opponent take turns drawing horizontal or vertical lines to connect the boxes. \n 4. When someone draws a line that completes a box, you write your initial inside to win the box. \n 5. Once all the dots have been connected, you can count up the boxes and find the winner."
+        android:text="1. The goal of each player is to close as many boxes as they can.\n\n 2. The person with the most boxes wins the game. \n\n 3. You and your opponent take turns drawing horizontal or vertical lines to connect the boxes. \n\n 4. When someone draws a line that completes a box, you write your initial inside to win the box. \n\n 5. Once all the dots have been connected, you can count up the boxes and find the winner."
         android:textAlignment="viewStart"
+        android:textColor="#29D9DD"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,16 +43,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.278" />
-
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="338dp"
-        android:layout_height="196dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintVertical_bias="0.531" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

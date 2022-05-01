@@ -4,11 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.dotsboxes_as.MainActivity;
 import com.example.dotsboxes_as.R;
 import com.example.dotsboxes_as.SharedInformation;
 import com.example.dotsboxes_as.model.Direction;
@@ -71,6 +73,7 @@ public class GameView extends View implements Observer {
     public void startGame(Player[] players) {
         game = new Graph(5, 5, players);
         game.addObserver(this);
+        game.setGameView(this);
         new Thread() {
             @Override
             public void run() {
@@ -83,6 +86,9 @@ public class GameView extends View implements Observer {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        final MediaPlayer soundDrawLine = MediaPlayer.create(getContext(), R.raw.draw_line);
+        soundDrawLine.start();
 
         canvas.drawColor(0x00FFFFFF);
         int min = Math.min(getWidth(), getHeight());
@@ -218,4 +224,15 @@ public class GameView extends View implements Observer {
             playersState.setWinner(winner);
         }
     }
+
+    public void soundDrawLine(){
+        final MediaPlayer sound = MediaPlayer.create(getContext(), R.raw.draw_line);
+        sound.start();
+    }
+
+    public void soundFillSquare(){
+        final MediaPlayer sound = MediaPlayer.create(getContext(), R.raw.fill_square);
+        sound.start();
+    }
+
 }

@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
                     @Override
                     public void run() {
                         new AlertDialog.Builder(MainActivity.this)
-                                .setTitle("Dots And Boxes")
+                                
+                                .setTitle("Start New Game?")
                                 .setMessage("This will clear the game board.")
                                 .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
