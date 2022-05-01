@@ -94,7 +94,6 @@ public class GameSettings extends AppCompatActivity {
     }
 
     public void openGamePlay(){
-        soundNewGame();
         if(p1Index==p2Index){
             Toast.makeText(getApplicationContext(), "Players cannot use the same icon!", Toast.LENGTH_SHORT).show();
         } else {
@@ -123,19 +122,7 @@ public class GameSettings extends AppCompatActivity {
             p2_iconView.setBackgroundResource(information.getIconColorMappings()[p2Index].iconAddress);
             p2_colorView.setBackgroundColor(information.getIconColorMappings()[p2Index].color);
         }
-        soundNextColor();
     }
-
-    public void soundNewGame(){
-        final MediaPlayer sound = MediaPlayer.create(this, R.raw.new_game);
-        sound.start();
-    }
-
-    public void soundNextColor(){
-        final MediaPlayer sound = MediaPlayer.create(this, R.raw.next_color);
-        sound.start();
-    }
-
 
 }
 

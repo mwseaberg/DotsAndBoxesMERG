@@ -17,8 +17,6 @@ public class Graph extends Observable {
     private int[][] verticalLines;
     private Line latestLine;
 
-    private GameView gameView;
-
     public Graph(int width, int height, Player[] players) {
         this.width = width;
         this.height = height;
@@ -30,10 +28,6 @@ public class Graph extends Observable {
 
         addPlayersToGame(players);
         currentPlayerIndex = 0;
-    }
-
-    public void setGameView(GameView gameView) {
-        this.gameView = gameView;
     }
 
     public Player[] getPlayers() {
@@ -140,12 +134,10 @@ public class Graph extends Observable {
                 verticalLines[line.row()][line.column()] = currentPlayerIndex + 1;
                 break;
         }
-        gameView.soundDrawLine();
     }
 
     private void setBoxOccupied(int row, int column, Player player) {
         occupied[row][column] = player;
-        gameView.soundFillSquare();
     }
 
     private boolean tryToOccupyUpperBox(Line move) {
