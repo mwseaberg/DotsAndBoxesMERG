@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
         buttonTutorial.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                openHowToPlay();
+
+                /*
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -111,10 +114,12 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
                                 .setNeutralButton("Close", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
+                                        openHowToPlay();
                                     }
                                 }).show();
                     }
                 });
+                */
             }
         });
 
@@ -123,9 +128,8 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
         actionBar.hide();
 
     }
-
-    public void openGameSettings(){
-        Intent intent  = new Intent(this, GameSettings.class);
+    public void openHowToPlay(){
+        Intent intent  = new Intent(this, HowToPlay.class);
         startActivity(intent);
     }
 
