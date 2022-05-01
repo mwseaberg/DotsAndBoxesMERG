@@ -2,7 +2,7 @@
 
 **Task Monitoring** :: [Trello board](https://trello.com/invite/b/Lzz5KTye/e94a21dfe1b84583d4e0a9e2b971ea72/dots-boxes-game)<br>
 
-| Username   | Team                 | Role        | 
+| Username   | Team                 | Focus Role        | 
 |----------- | -------------------- | ----------- | 
 | mwseaberg  | Meredith             | gameplay    |
 | eg79       | Etry                 | design      |
@@ -17,19 +17,17 @@
 Dots and Boxes app made using Android Studio.
 
 <ins>**Features**</ins><br>
-- TODO update this
-- GamePlay Screen
-  * Working game play
-  * 2 player functionality
-  * Player icons
 - Home Screen
-  * Navigation to How To Play Screen or GamePlay
+  * Access to How to Play, Game Settings
+- Game Settings Screen
+  * Functional icon/color selection
+  * Access to GamePlay Screen 
+- GamePlay Screen
+  * Functional 2 player game
+  * Access to How to Play
 - How To Play Screen
   * Written instructions 
   * Video tutorial
-- Game Settings Screen
-  * Navigation to GamePlay Screen 
-  * This screen to be updated with integration of gamplay
 
 
 
