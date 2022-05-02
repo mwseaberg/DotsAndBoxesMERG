@@ -5,10 +5,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.dotsboxes_as.MainActivity;
 import com.example.dotsboxes_as.R;
@@ -18,6 +20,8 @@ import com.example.dotsboxes_as.model.Graph;
 import com.example.dotsboxes_as.model.HumanPlayer;
 import com.example.dotsboxes_as.model.Line;
 import com.example.dotsboxes_as.model.Player;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +39,7 @@ public class GameView extends View implements Observer {
     protected static final float add6 = (float) 9 / 824;
 
     protected int[] playerColors;
+    protected int[] playerColorIDs;
     protected Graph game;
     protected Line move;
     protected Paint paint;
@@ -68,6 +73,11 @@ public class GameView extends View implements Observer {
         SharedInformation information = new SharedInformation();
         playerColors = new int[]{information.getColor(p1ColorIndex),
                 information.getColor(p2ColorIndex)};
+        playerColorIDs = new int[]{p1ColorIndex, p2ColorIndex};
+    }
+
+    public int getPlayerColor(int id) {
+        return playerColorIDs[id];
     }
 
     public void startGame(Player[] players) {
@@ -79,7 +89,6 @@ public class GameView extends View implements Observer {
                 game.start();
             }
         }.start();
-        postInvalidate();
     }
 
     @Override

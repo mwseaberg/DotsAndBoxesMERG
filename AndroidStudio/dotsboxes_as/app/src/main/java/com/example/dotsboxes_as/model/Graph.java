@@ -1,6 +1,7 @@
 package com.example.dotsboxes_as.model;
 
 import android.media.MediaPlayer;
+import android.widget.TextView;
 
 import com.example.dotsboxes_as.R;
 import com.example.dotsboxes_as.view.GameView;

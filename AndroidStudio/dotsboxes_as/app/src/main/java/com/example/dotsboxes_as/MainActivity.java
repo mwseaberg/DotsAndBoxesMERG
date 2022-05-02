@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -94,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
             }
         });
 
+
+
         //tutorial button
         ImageButton buttonTutorial = (ImageButton) findViewById(R.id.tutorialButton);
         buttonTutorial.setOnClickListener( new View.OnClickListener() {
@@ -137,7 +140,13 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
     private void startGame(Player[] players) {
         gameView.startGame(players);
         setCurrentPlayer(players[0]);
+        SharedInformation sharedInformation = new SharedInformation();
+
 //        updateState();
+
+        player1name.setTextColor(Color.parseColor(sharedInformation.hexColors[gameView.getPlayerColor(0)]));
+        player2name.setTextColor(Color.parseColor(sharedInformation.hexColors[gameView.getPlayerColor(1)]));
+
     }
 
     public void updateState() {
@@ -226,6 +235,8 @@ public class MainActivity extends AppCompatActivity implements PlayersStateView 
 
                                     player1name.setText("PLAYER 1");
                                     player2name.setText("PLAYER 2");
+
+
                                 }
                             }).show();
                 }

@@ -6,6 +6,13 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SharedInformation {
+    String[] hexColors = new String[]{
+            "#ff75bc", "#ffca06", "#409e75", "#f8b0be", "#ff9d31", "#f20730", "#1f54ff", "#b346cf", "#9b1f36", "#f6917d", "#44bba0", "#a5abc2"
+    };
+
+    public SharedInformation() {
+//        hexColors = /;
+    }
 
     public class IconColor{
         int iconAddress;
@@ -21,18 +28,18 @@ public class SharedInformation {
 
 
     private final IconColor[] iconColorMappings = {
-            new IconColor(R.drawable.bunny, Color.parseColor("#ff75bc")),
-            new IconColor(R.drawable.cat, Color.parseColor("#ffca06")),
-            new IconColor(R.drawable.bird, Color.parseColor("#409e75")),
-            new IconColor(R.drawable.deer, Color.parseColor("#f8b0be")),
-            new IconColor(R.drawable.frog, Color.parseColor("#ff9d31")),
-            new IconColor(R.drawable.owl, Color.parseColor("#f20730")),
-            new IconColor(R.drawable.fish, Color.parseColor("#1f54ff")),
-            new IconColor(R.drawable.bat, Color.parseColor("#b346cf")),
-            new IconColor(R.drawable.swan, Color.parseColor("#9b1f36")),
-            new IconColor(R.drawable.penguin, Color.parseColor("#f6917d")),
-            new IconColor(R.drawable.butterfly, Color.parseColor("#44bba0")),
-            new IconColor(R.drawable.wolf, Color.parseColor("#a5abc2"))
+            new IconColor(R.drawable.bunny, Color.parseColor(hexColors[0])),
+            new IconColor(R.drawable.cat, Color.parseColor(hexColors[1])),
+            new IconColor(R.drawable.bird, Color.parseColor(hexColors[2])),
+            new IconColor(R.drawable.deer, Color.parseColor(hexColors[3])),
+            new IconColor(R.drawable.frog, Color.parseColor(hexColors[4])),
+            new IconColor(R.drawable.owl, Color.parseColor(hexColors[5])),
+            new IconColor(R.drawable.fish, Color.parseColor(hexColors[6])),
+            new IconColor(R.drawable.bat, Color.parseColor(hexColors[7])),
+            new IconColor(R.drawable.swan, Color.parseColor(hexColors[8])),
+            new IconColor(R.drawable.penguin, Color.parseColor(hexColors[9])),
+            new IconColor(R.drawable.butterfly, Color.parseColor(hexColors[10])),
+            new IconColor(R.drawable.wolf, Color.parseColor(hexColors[11]))
     };
 
 //    public void setIconColorMappings(){

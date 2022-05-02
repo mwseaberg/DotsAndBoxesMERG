@@ -35,7 +35,7 @@
                 android:textSize="20dp"
                 android:fontFamily="@font/arcadeclassic"
                 android:layout_marginTop="100dp"
-                android:textColor="#29D9DD" />
+                />
 
 
             <TextView
@@ -46,7 +46,7 @@
                 android:textSize="20dp"
                 android:fontFamily="@font/arcadeclassic"
                 android:layout_marginTop="20dp"
-                android:textColor="#D129DD" />
+                android:textColor="#d677dd" />
         </LinearLayout>
 
 
@@ -73,8 +73,9 @@
                 android:text="PLAYER 2"
                 android:textSize="20dp"
                 android:fontFamily="@font/arcadeclassic"
-                android:layout_marginTop="100dp"
-                android:textColor="#29D9DD" />
+                android:layout_marginTop="100dp" />
+<!--                android:textColor="#29D9DD" -->
+
 
 
 
@@ -87,7 +88,7 @@
                 android:text="Boxes: 0"
                 android:textSize="20dp"
                 android:fontFamily="@font/arcadeclassic"
-                android:textColor="#D129DD" />
+                android:textColor="#d677dd" />
         </LinearLayout>
     </LinearLayout>
 
