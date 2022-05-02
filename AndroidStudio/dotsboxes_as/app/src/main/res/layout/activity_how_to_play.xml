@@ -28,14 +28,14 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_width="374dp"
+        android:layout_height="430dp"
         android:fontFamily="@font/arcadeclassic"
         android:inputType="textMultiLine"
-        android:text="1. The goal of each player is to close as many boxes as they can.\n\n 2. The person with the most boxes wins the game. \n\n 3. You and your opponent take turns drawing horizontal or vertical lines to connect the boxes. \n\n 4. When someone draws a line that completes a box, you write your initial inside to win the box. \n\n 5. Once all the dots have been connected, you can count up the boxes and find the winner."
+        android:text="Players   alternate   placing   a   line   on   the   gameboard.\n\n If   the   player   creates   a   square,   their   score   is   increased   by   1   and   the   scoring   player   goes   again.\n\n The   player   that   creates   the   most   squares   wins!"
         android:textAlignment="viewStart"
         android:textColor="#29D9DD"
-        android:textSize="14sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
